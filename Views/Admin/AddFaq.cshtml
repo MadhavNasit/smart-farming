@@ -1,0 +1,72 @@
+﻿@model SmartFarming.Models.ManageFaq
+@{
+    ViewBag.Title = "AddFaq";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add Dealer
+            </h4>
+        </div>
+        @using (Html.BeginForm("AddFaq", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Question, new { @class = "form-control col-md-10", rows = 2 })
+                        @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Answer, new { @class = "form-control col-md-10", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-6">
+                            <label class="label-success">@ViewBag.SucessMessage</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-faq').addClass('active');
+        $('.manage-crop').removeClass('active');
+        $('.manage-dealer').removeClass('active');
+        $('.manage-news').removeClass('active');
+    });
+</script>

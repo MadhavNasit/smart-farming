@@ -1,0 +1,56 @@
+﻿@model List<SmartFarming.Models.ManageFertilizers>
+@{
+    ViewBag.Title = "ManageFertilizers";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;Manage Fertilizer
+            </h4>
+        </div>
+        <div class="panel-body" style="margin-top:10px">
+            <div class="container-fluid">
+                <a href="@Url.Action("AddOrEditFertilizer", "Dealer",new { id = 0 })" class="btn btn-primary" style="float:right; margin-bottom:6px; font-weight:700;"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Fertilizer</a>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:8%">Sr. No</th>
+                            <th style="width:20%">Fertilizer</th>
+                            <th style="width:20%">Material</th>
+                            <th style="width:20%">Crop</th>
+                            <th style="width:15%">Price</th>
+                            <th style="width:17%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= Model.Count; i++)
+                        {
+                        <tr>
+                            <td>@i</td>
+                            <td>@Model[i - 1].FertilizerName</td>
+                            <td>@Model[i - 1].Material</td>
+                            <td>@Model[i - 1].CropName</td>
+                            <td>@Model[i - 1].Price</td>
+                            <td>
+                                <a href="@Url.Action("AddOrEditFertilizer", "Dealer",new { id = Model[i - 1].id })" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                                <a href="@Url.Action("DeleteFertilizer", "Dealer",new { id = Model[i - 1].id })" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-pesticides').removeClass('active');
+        $('.manage-seeds').removeClass('active');
+        $('.manage-fertilizers').addClass('active');
+        $('.quatation').removeClass('active');
+    });
+</script>

@@ -1,0 +1,206 @@
+﻿@model SmartFarming.Models.AddOrEditFertilizer
+@{
+    ViewBag.Title = "AddOrEditFertilizer";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9 offset-1">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add Fertilizer
+            </h4>
+        </div>
+        @using (Html.BeginForm("AddOrEditFertilizer", "Dealer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.FertilizerImage)
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.FertilizerName, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.FertilizerName, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.FertilizerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.FertilizerImage, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" class="form-control" title="search image" id="file" name="file" onchange="show(this)" />
+                    </div>
+                    @if (Model.FertilizerImage != null)
+                    {
+                        <div class="col-md-4" style="position:relative">
+                            <img src="~/Images/@Model.FertilizerImage" id="model_img" height="80" width="140" style="position:absolute;" />
+                        </div>
+                    }
+                    <div class="col-md-4" style="position:relative">
+                        <img id="demo_img" height="80" width="140" style="position:absolute; display:none" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.crop_id, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.crop_id, new SelectList(Model.CropList, "id", "Name"), "Select Crop", new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.crop_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Material, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Material, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Material, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PackType, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PackType, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.PackType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PackSize, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PackSize, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.PackSize, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Solubility, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Solubility, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Solubility, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Doses, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Doses, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Doses, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PHvalue, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PHvalue, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.PHvalue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Features, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Features, new { @class = "form-control", rows = "5" })
+                        @Html.ValidationMessageFor(model => model.Features, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.HowToUse, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.HowToUse, new { @class = "form-control", rows = "5" })
+                        @Html.ValidationMessageFor(model => model.HowToUse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script type="text/javascript">
+    function show(input) {
+        $('#model_img').hide();
+        $('#demo_img').show();
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#demo_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).ready(function () {
+        $('.manage-pesticides').removeClass('active');
+        $('.manage-seeds').removeClass('active');
+        $('.manage-fertilizers').addClass('active');
+        $('.quatation').removeClass('active');
+    });
+</script>
+
+

@@ -1,0 +1,183 @@
+﻿@model SmartFarming.Models.AddOrEditPesticide
+@{
+    ViewBag.Title = "AddOrEditPesticide";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add Pesticide
+            </h4>
+        </div>
+        @using (Html.BeginForm("AddOrEditPesticide", "Dealer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.PesticideImage)
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PesticideName, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PesticideName, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.PesticideName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PesticideImage, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" class="form-control" title="search image" id="file" name="file" onchange="show(this)" />
+                    </div>
+                    @if (Model.PesticideImage != null)
+                    {
+                        <div class="col-md-4" style="position:relative">
+                            <img src="~/Images/@Model.PesticideImage" id="model_img" height="80" width="140" style="position:absolute;" />
+                        </div>
+                    }
+                    <div class="col-md-4" style="position:relative">
+                        <img id="demo_img" height="80" width="140" style="position:absolute; display:none" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.crop_id, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.crop_id, new SelectList(Model.CropList, "id", "Name"), "Select Crop", new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.crop_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label " })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.Category, new List<SelectListItem> {
+                                                new SelectListItem { Value = "Insecticides – insects" , Text = "Insecticides – insects" },
+                                                new SelectListItem { Value = "Herbicides – plants" , Text = "Herbicides – plants" },
+                                                new SelectListItem { Value = "Rodenticides – rodents (rats & mice)" , Text = "Rodenticides – rodents (rats & mice)" },
+                                                new SelectListItem { Value = "Bactericides – bacteria" , Text = "Bactericides – bacteria" },
+                                                new SelectListItem { Value = "Fungicides – fungi" , Text = "Fungicides – fungi" },
+                                                new SelectListItem { Value = "Larvicides – larvae" , Text = "Larvicides – larvae" }
+                                            }, new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Formulation, htmlAttributes: new { @class = "control-label " })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.Formulation, new List<SelectListItem> {
+                                                new SelectListItem { Value = "Dry flowable" , Text = "Dry flowable" },
+                                                new SelectListItem { Value = "Soluble powder" , Text = "Soluble powder" },
+                                                new SelectListItem { Value = "Water-dispersible" , Text = "Water-dispersible" }
+                                            }, new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.Formulation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PackingType, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PackingType, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.PackingType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Dosage, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Dosage, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Dosage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.PesticideDescription, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.PesticideDescription, new { @class = "form-control", rows = "5" })
+                        @Html.ValidationMessageFor(model => model.PesticideDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script type="text/javascript">
+    function show(input) {
+        $('#model_img').hide();
+        $('#demo_img').show();
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#demo_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $(document).ready(function () {
+        $('.manage-pesticides').addClass('active');
+        $('.manage-seeds').removeClass('active');
+        $('.manage-fertilizers').removeClass('active');
+        $('.quatation').removeClass('active');
+    });
+</script>
+

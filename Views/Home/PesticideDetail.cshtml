@@ -1,0 +1,55 @@
+﻿@model SmartFarming.Models.AddOrEditPesticide
+@{
+    ViewBag.Title = "PesticideDetail";
+    ViewBag.Image = "seeddetails-banner.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<section class="seed-details" style="padding-bottom:90px">
+    <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-stretch" style="border-right: 1px solid #adadad85;">
+                <div class="d-flex justify-content-center" style="border: 1px solid #adadad85;">
+                    <img src="~/Images/@Model.PesticideImage" width="100%" style="object-fit:contain" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3>@Model.PesticideName</h3>
+                <div>
+                    <table class="table seed-details-table" style="margin-bottom:0px">
+                        <tbody>
+                            <tr>
+                                <td>Category</td>
+                                <td>@Model.Category</td>
+                            </tr>
+                            <tr>
+                                <td>Packing Type</td>
+                                <td>@Model.PackingType</td>
+                            </tr>
+                            <tr>
+                                <td>Dosage</td>
+                                <td>@Model.Dosage</td>
+                            </tr>
+                            <tr>
+                                <td>Formulation</td>
+                                <td>@Model.Formulation</td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>@Model.Price</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-body">
+                <h4>Crop Description</h4>
+                <p>@Model.PesticideDescription</p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+

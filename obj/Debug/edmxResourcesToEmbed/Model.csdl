@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartFarmingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Cities_States" FromRole="Cities" ToRole="States" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Cities" FromRole="Cities" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ContactU">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Crop">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CropName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CropDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Kharif" Type="Boolean" />
+    <Property Name="Rabi" Type="Boolean" />
+    <Property Name="Zaid" Type="Boolean" />
+    <Property Name="type_id" Type="Int32" Nullable="false" />
+    <Property Name="CropImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RainFall" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SoilType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HighestProducers" Type="Int32" />
+    <Property Name="LandPreparation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SowingMethod" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Harvesting" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CropType" Relationship="Self.FK_Crops_CropTypes" FromRole="Crops" ToRole="CropTypes" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Crops_States" FromRole="Crops" ToRole="States" />
+    <NavigationProperty Name="MajorProducers" Relationship="Self.FK_MajorProducers_Crops" FromRole="Crops" ToRole="MajorProducers" />
+    <NavigationProperty Name="Seeds" Relationship="Self.FK_Seeds_Crops" FromRole="Crops" ToRole="Seeds" />
+  </EntityType>
+  <EntityType Name="CropType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Croptype1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Crops" Relationship="Self.FK_Crops_CropTypes" FromRole="CropTypes" ToRole="Crops" />
+  </EntityType>
+  <EntityType Name="Faq">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Answer" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fertilizer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_id" Type="Int32" Nullable="false" />
+    <Property Name="crop_id" Type="Int32" Nullable="false" />
+    <Property Name="FertilizerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FertilizerImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Material" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PackType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PackSize" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Features" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Solubility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Doses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHvalue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HowToUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Fertilizers_Users" FromRole="Fertilizers" ToRole="Users" />
+    <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Fertilizers" FromRole="Fertilizers" ToRole="Quotation" />
+  </EntityType>
+  <EntityType Name="MajorProducer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="crop_id" Type="Int32" Nullable="false" />
+    <Property Name="state_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Crop" Relationship="Self.FK_MajorProducers_Crops" FromRole="MajorProducers" ToRole="Crops" />
+    <NavigationProperty Name="State" Relationship="Self.FK_MajorProducers_States" FromRole="MajorProducers" ToRole="States" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Headline" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Pesticide">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_id" Type="Int32" Nullable="false" />
+    <Property Name="crop_id" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PesticideName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PesticideImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PackingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dosage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Formulation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PesticideDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Pesticides_Users" FromRole="Pesticides" ToRole="Users" />
+    <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Pesticides" FromRole="Pesticides" ToRole="Quotation" />
+  </EntityType>
+  <EntityType Name="Quotation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seed_id" Type="Int32" />
+    <Property Name="pesticide_id" Type="Int32" />
+    <Property Name="fertilizer_id" Type="Int32" />
+    <Property Name="dealer_id" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Fertilizer" Relationship="Self.FK_Quotation_Fertilizers" FromRole="Quotation" ToRole="Fertilizers" />
+    <NavigationProperty Name="Pesticide" Relationship="Self.FK_Quotation_Pesticides" FromRole="Quotation" ToRole="Pesticides" />
+    <NavigationProperty Name="Seed" Relationship="Self.FK_Quotation_Seeds" FromRole="Quotation" ToRole="Seeds" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Quotation_Users" FromRole="Quotation" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="SeedImage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seed_id" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Seed" Relationship="Self.FK_SeedImages_Seeds" FromRole="SeedImages" ToRole="Seeds" />
+  </EntityType>
+  <EntityType Name="Seed">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="crop_id" Type="Int32" Nullable="false" />
+    <Property Name="dealer_id" Type="Int32" Nullable="false" />
+    <Property Name="SeedName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Season" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PestTolerance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinQuentity" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PacketSize" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="GrowthHabit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositiveFactor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NegativeFactor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fertilizer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Height" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SeedsPerPacket" Type="Int32" />
+    <NavigationProperty Name="Crop" Relationship="Self.FK_Seeds_Crops" FromRole="Seeds" ToRole="Crops" />
+    <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Seeds" FromRole="Seeds" ToRole="Quotation" />
+    <NavigationProperty Name="SeedImages" Relationship="Self.FK_SeedImages_Seeds" FromRole="Seeds" ToRole="SeedImages" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Seeds_Users" FromRole="Seeds" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_States" FromRole="States" ToRole="Cities" />
+    <NavigationProperty Name="Crops" Relationship="Self.FK_Crops_States" FromRole="States" ToRole="Crops" />
+    <NavigationProperty Name="MajorProducers" Relationship="Self.FK_MajorProducers_States" FromRole="States" ToRole="MajorProducers" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_States" FromRole="States" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tractor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_id" Type="Int32" Nullable="false" />
+    <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TractorImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" />
+    <Property Name="Clutch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="NoOfCylinder" Type="Int32" />
+    <Property Name="HpCategory" Type="Int32" />
+    <Property Name="EngineRatedRPM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cooling" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AirFilter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Brake" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Battery" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GearBox" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Steering" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FuelTank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Accessories" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Features" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Warranty" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalWeight" Type="Int32" />
+    <Property Name="GroundClearance" Type="Int32" />
+    <Property Name="TurningRadius" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Tractors_Users" FromRole="Tractors" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="city_id" Type="Int32" />
+    <Property Name="state_id" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Users_Cities" FromRole="Users" ToRole="Cities" />
+    <NavigationProperty Name="Fertilizers" Relationship="Self.FK_Fertilizers_Users" FromRole="Users" ToRole="Fertilizers" />
+    <NavigationProperty Name="Pesticides" Relationship="Self.FK_Pesticides_Users" FromRole="Users" ToRole="Pesticides" />
+    <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Users" FromRole="Users" ToRole="Quotation" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Seeds" Relationship="Self.FK_Seeds_Users" FromRole="Users" ToRole="Seeds" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Users_States" FromRole="Users" ToRole="States" />
+    <NavigationProperty Name="Tractors" Relationship="Self.FK_Tractors_Users" FromRole="Users" ToRole="Tractors" />
+  </EntityType>
+  <EntityType Name="SeedFaq">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="seed_id" />
+      <PropertyRef Name="Question" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="seed_id" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Posted" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_Cities_States">
+    <End Role="States" Type="Self.State" Multiplicity="1" />
+    <End Role="Cities" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Cities">
+    <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Crops_CropTypes">
+    <End Role="CropTypes" Type="Self.CropType" Multiplicity="1" />
+    <End Role="Crops" Type="Self.Crop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropTypes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Crops">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Crops_States">
+    <End Role="States" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Crops" Type="Self.Crop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Crops">
+        <PropertyRef Name="HighestProducers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MajorProducers_Crops">
+    <End Role="Crops" Type="Self.Crop" Multiplicity="1" />
+    <End Role="MajorProducers" Type="Self.MajorProducer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Crops">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MajorProducers">
+        <PropertyRef Name="crop_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seeds_Crops">
+    <End Role="Crops" Type="Self.Crop" Multiplicity="1" />
+    <End Role="Seeds" Type="Self.Seed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Crops">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seeds">
+        <PropertyRef Name="crop_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fertilizers_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Fertilizers" Type="Self.Fertilizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fertilizers">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Fertilizers">
+    <End Role="Fertilizers" Type="Self.Fertilizer" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fertilizers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="fertilizer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MajorProducers_States">
+    <End Role="States" Type="Self.State" Multiplicity="1" />
+    <End Role="MajorProducers" Type="Self.MajorProducer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MajorProducers">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pesticides_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Pesticides" Type="Self.Pesticide" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pesticides">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Pesticides">
+    <End Role="Pesticides" Type="Self.Pesticide" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pesticides">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="pesticide_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Seeds">
+    <End Role="Seeds" Type="Self.Seed" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seeds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="seed_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeedImages_Seeds">
+    <End Role="Seeds" Type="Self.Seed" Multiplicity="1" />
+    <End Role="SeedImages" Type="Self.SeedImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seeds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SeedImages">
+        <PropertyRef Name="seed_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seeds_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Seeds" Type="Self.Seed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seeds">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_States">
+    <End Role="States" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tractors_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Tractors" Type="Self.Tractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tractors">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SmartFarmingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="ContactUs" EntityType="Self.ContactU" />
+    <EntitySet Name="Crops" EntityType="Self.Crop" />
+    <EntitySet Name="CropTypes" EntityType="Self.CropType" />
+    <EntitySet Name="Faqs" EntityType="Self.Faq" />
+    <EntitySet Name="Fertilizers" EntityType="Self.Fertilizer" />
+    <EntitySet Name="MajorProducers" EntityType="Self.MajorProducer" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Pesticides" EntityType="Self.Pesticide" />
+    <EntitySet Name="Quotations" EntityType="Self.Quotation" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SeedImages" EntityType="Self.SeedImage" />
+    <EntitySet Name="Seeds" EntityType="Self.Seed" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tractors" EntityType="Self.Tractor" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="SeedFaqs" EntityType="Self.SeedFaq" />
+    <AssociationSet Name="FK_Cities_States" Association="Self.FK_Cities_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Cities" Association="Self.FK_Users_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Crops_CropTypes" Association="Self.FK_Crops_CropTypes">
+      <End Role="CropTypes" EntitySet="CropTypes" />
+      <End Role="Crops" EntitySet="Crops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Crops_States" Association="Self.FK_Crops_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Crops" EntitySet="Crops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MajorProducers_Crops" Association="Self.FK_MajorProducers_Crops">
+      <End Role="Crops" EntitySet="Crops" />
+      <End Role="MajorProducers" EntitySet="MajorProducers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seeds_Crops" Association="Self.FK_Seeds_Crops">
+      <End Role="Crops" EntitySet="Crops" />
+      <End Role="Seeds" EntitySet="Seeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fertilizers_Users" Association="Self.FK_Fertilizers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Fertilizers" EntitySet="Fertilizers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Fertilizers" Association="Self.FK_Quotation_Fertilizers">
+      <End Role="Fertilizers" EntitySet="Fertilizers" />
+      <End Role="Quotation" EntitySet="Quotations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MajorProducers_States" Association="Self.FK_MajorProducers_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="MajorProducers" EntitySet="MajorProducers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pesticides_Users" Association="Self.FK_Pesticides_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Pesticides" EntitySet="Pesticides" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Pesticides" Association="Self.FK_Quotation_Pesticides">
+      <End Role="Pesticides" EntitySet="Pesticides" />
+      <End Role="Quotation" EntitySet="Quotations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Seeds" Association="Self.FK_Quotation_Seeds">
+      <End Role="Seeds" EntitySet="Seeds" />
+      <End Role="Quotation" EntitySet="Quotations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Users" Association="Self.FK_Quotation_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Quotation" EntitySet="Quotations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeedImages_Seeds" Association="Self.FK_SeedImages_Seeds">
+      <End Role="Seeds" EntitySet="Seeds" />
+      <End Role="SeedImages" EntitySet="SeedImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seeds_Users" Association="Self.FK_Seeds_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Seeds" EntitySet="Seeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_States" Association="Self.FK_Users_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tractors_Users" Association="Self.FK_Tractors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tractors" EntitySet="Tractors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

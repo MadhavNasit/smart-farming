@@ -1,0 +1,54 @@
+﻿@model List<SmartFarming.Models.ManageSeeds>
+@{
+    ViewBag.Title = "ManageSeeds";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;Manage Seeds
+            </h4>
+        </div>
+        <div class="panel-body" style="margin-top:10px">
+            <div class="container-fluid">
+                <a href="@Url.Action("AddOrEditSeed", "Dealer",new { id = 0 })" class="btn btn-primary" style="float:right; margin-bottom:6px; font-weight:700;"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Seed</a>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:8%">Sr. No</th>
+                            <th style="width:30%">Seed</th>
+                            <th style="width:30%">Crop</th>
+                            <th style="width:15%">Price</th>
+                            <th style="width:17%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@Model[i - 1].SeedName</td>
+                                <td>@Model[i - 1].CropName</td>
+                                <td>@Model[i - 1].Price</td>
+                                <td>
+                                    <a href="@Url.Action("AddOrEditSeed", "Dealer",new { id = Model[i - 1].id })" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                                    <a href="@Url.Action("DeleteSeed", "Dealer",new { id = Model[i - 1].id })" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-seeds').addClass('active');
+        $('.manage-pesticides').removeClass('active');
+        $('.manage-fertilizers').removeClass('active');
+        $('.quatation').removeClass('active');
+    });
+</script>

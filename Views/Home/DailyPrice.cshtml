@@ -1,0 +1,256 @@
+﻿
+@{
+    ViewBag.Title = "DailyPrice";
+    ViewBag.Image = "faq-banner.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section style="padding-bottom:90px">
+    <div class="container pb-3 pt-3" style="background-color: #fff; margin-top:-40px; border-radius: .5em;">
+        <div class="card">
+            <div class="d-flex card-header" style="background: url(../../Images/texture3.jpg);">
+                <select id="state" class="form-control daily-price-dropdown m-2">
+                    <option value>Select State</option>
+                </select>
+                <select id="district" class="form-control daily-price-dropdown m-2">
+                    <option value>Select District</option>
+                </select>
+                <select id="market" class="form-control daily-price-dropdown m-2">
+                    <option value>Select Market</option>
+                </select>
+                <select id="commodity" class="form-control daily-price-dropdown m-2">
+                    <option value>Select Commodity</option>
+                </select>
+                <button class="btn btn-theme-default m-2" id="search-btn">Search</button>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover price-table"
+                       style="display: none; border: 1px solid rgba(0,0,0,.125);">
+                    <thead class="thead-dark">
+                    <th>State</th>
+                    <th>District</th>
+                    <th>Market</th>
+                    <th>Commodity</th>
+                    <th>Variety</th>
+                    <th>Min_price</th>
+                    <th>Max Price</th>
+                    <th>Modal Price</th>
+                    </thead>
+                    <tbody class="price-table-body">
+                    </tbody>
+                </table>
+                <div class="no-data" style="display: none;"></div>
+                <div class="loader" style="display: none;"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+
+        var stateList = [];
+        $('#district').prop("disabled", true);
+        $('#market').prop("disabled", true);
+        $('#commodity').prop("disabled", true);
+
+        $.ajax({
+            url: 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000',
+            method: "GET",
+            beforeSend: function () {
+                $(".loader").show();;
+            },
+            success: function (response) {
+
+                if (response.count != 0) {
+
+                    for (var i = 0; i < response.count; i++) {
+                        if (stateList.indexOf(response.records[i]["state"]) === -1) {
+                            stateList.push(response.records[i]["state"]);
+                            $('#state').append('<option value="' + response.records[i]["state"] + '")>' + response.records[i]["state"] + '</option>');
+                        }
+                    }
+                }
+            },
+            complete: function (data) {
+                $(".loader").hide();
+            }
+        });
+    });
+
+    $('#state').change(function () {
+        var districtArray = [];
+        if ($('#state').val() == "") {
+            $('#district').prop("disabled", true);
+        }
+        else {
+            $('#district').prop("disabled", false);
+        }
+
+        $('#market').prop("disabled", true);
+        $('#commodity').prop("disabled", true);
+        $('#market').empty();
+        $('#market').append('<option value>Select Market</option>');
+        $('#commodity').empty();
+        $('#commodity').append('<option value>Select Commodity</option>');
+
+        $('#district').empty();
+        $('#district').append('<option value>Select District</option>');
+        var state = $('#state').val();
+        $.ajax({
+            url: 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '',
+            method: "GET",
+            beforeSend: function () {
+                $(".loader").show();
+            },
+            success: function (response) {
+
+                if (response.count != 0) {
+
+                    for (var i = 0; i < response.count; i++) {
+                        if (districtArray.indexOf(response.records[i]["district"]) === -1) {
+                            districtArray.push(response.records[i]["district"]);
+                            $('#district').append('<option value="' + response.records[i]["district"] + '")>' + response.records[i]["district"] + '</option>');
+                        }
+                    }
+                }
+            },
+            complete: function (data) {
+                $(".loader").hide();
+            }
+        });
+    });
+
+    $('#district').change(function () {
+        var marketList = [];
+        if ($('#district').val() == "") {
+            $('#market').prop("disabled", true);
+        }
+        else {
+            $('#market').prop("disabled", false);
+        }
+        $('#commodity').prop("disabled", true);
+        $('#commodity').empty();
+        $('#commodity').append('<option value>Select Commodity</option>');
+
+        $('#market').empty();
+        $('#market').append('<option value>Select Market</option>');
+        var state = $('#state').val();
+        var districtName = $('#district').val();
+        $.ajax({
+            url: 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '&filters[district]=' + districtName + '',
+            method: "GET",
+            beforeSend: function () {
+                $(".loader").show();
+            },
+            success: function (response) {
+
+                if (response.count != 0) {
+
+                    for (var i = 0; i < response.count; i++) {
+                        if (marketList.indexOf(response.records[i]["market"]) === -1) {
+                            marketList.push(response.records[i]["market"]);
+                            $('#market').append('<option value="' + response.records[i]["market"] + '")>' + response.records[i]["market"] + '</option>');
+                        }
+                    }
+                }
+            },
+            complete: function (data) {
+                $(".loader").hide();
+            }
+        });
+    });
+
+    $('#market').change(function () {
+        var commodityList = [];
+        if ($('#market').val() == "") {
+            $('#commodity').prop("disabled", true);
+        }
+        else {
+            $('#commodity').prop("disabled", false);
+        }
+        $('#commodity').empty();
+        $('#commodity').append('<option value>Select Commodity</option>');
+        var state = $('#state').val();
+        var districtName = $('#district').val();
+        var market = $('#market').val();
+
+        $.ajax({
+            url: 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '&filters[district]=' + districtName + '&filters[market]=' + market + '',
+            method: "GET",
+            beforeSend: function () {
+                $(".loader").show();
+            },
+            success: function (response) {
+
+                if (response.count != 0) {
+
+                    for (var i = 0; i < response.count; i++) {
+                        if (commodityList.indexOf(response.records[i]["commodity"]) === -1) {
+                            commodityList.push(response.records[i]["commodity"]);
+                            $('#commodity').append('<option value="' + response.records[i]["commodity"] + '")>' + response.records[i]["commodity"] + '</option>');
+                        }
+                    }
+                }
+            },
+            complete: function (data) {
+                $(".loader").hide();
+            }
+        });
+    });
+
+    $('#search-btn').click(function () {
+
+        var state = $('#state').val();
+        var district = $('#district').val();
+        var market = $('#market').val();
+        var commodity = $('#commodity').val();
+
+        if (state != 0 && district != 0 && market != 0 && commodity != 0) {
+            var url = 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '&filters[district]=' + district + '&filters[market]=' + market + '&filters[commodity]=' + commodity + '';
+        }
+        else if (state != 0 && district != 0 && market != 0) {
+            var url = 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '&filters[district]=' + district + '&filters[market]=' + market + '';
+        }
+        else if (state != 0 && district != 0) {
+            var url = 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '&filters[district]=' + district + '';
+        }
+        else if (state != 0) {
+            var url = 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000&filters[state]=' + state + '';
+        }
+        else {
+            var url = 'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000018cfe7ab5f22f4e457263be45bf0a00db&format=json&offset=0&limit=10000';
+        }
+
+        $.ajax({
+            url: url,
+            method: "GET",
+            beforeSend: function () {
+                $(".loader").show();
+                $('.price-table').hide();
+                $('.no-data').hide();
+            },
+            success: function (response) {
+
+                if (response.count != 0) {
+                    $('.no-data').hide();
+                    $('.price-table-body').empty();
+
+                    for (var i = 0; i < response.count; i++) {
+                        $('.price-table-body').append('<tr><td>' + response.records[i]["state"] + '</td><td>' + response.records[i]["district"] + '</td><td>' + response.records[i]["market"] + '</td><td>' + response.records[i]["commodity"] + '</td><td>' + response.records[i]["variety"] + '</td><td>' + response.records[i]["min_price"] + '</td><td>' + response.records[i]["max_price"] + '</td><td>' + response.records[i]["modal_price"] + '</td></tr>');
+                    }
+                    $('.price-table').show();
+                }
+                else {
+                    $('.price-table').hide();
+                    $('.no-data').show();
+                    $('.no-data').html('No data found for given filter');
+                }
+            },
+            complete: function (data) {
+                $(".loader").hide();
+            }
+        });
+    });
+</script>
+

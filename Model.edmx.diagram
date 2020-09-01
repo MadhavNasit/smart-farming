@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce3602e36a804912bafafb95145cf274" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartFarmingModel.City" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.ContactU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Crop" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.CropType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Faq" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Fertilizer" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.MajorProducer" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.News" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Pesticide" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Quotation" Width="1.5" PointX="9.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Role" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.SeedImage" Width="1.5" PointX="12.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Seed" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.State" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.sysdiagram" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.Tractor" Width="1.5" PointX="7.5" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.User" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFarmingModel.SeedFaq" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Cities_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Users_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Crops_CropTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Crops_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_MajorProducers_Crops" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Seeds_Crops" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Fertilizers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Quotation_Fertilizers" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_MajorProducers_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Pesticides_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Quotation_Pesticides" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Quotation_Seeds" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Quotation_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_SeedImages_Seeds" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Seeds_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Users_States" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFarmingModel.FK_Tractors_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

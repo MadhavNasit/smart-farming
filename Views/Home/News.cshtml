@@ -1,0 +1,30 @@
+﻿@model List<SmartFarming.Models.NewsView>
+
+@{
+    ViewBag.Title = "News";
+    ViewBag.Image = "contactus-banner1.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section class="seed-details" style="padding-bottom:90px">
+    <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("NewsDetails","Home", new { id = item.id})">
+                <div class="news-sub-div my-1 p-2">
+                    <div class="news-date">
+                        <div>@item.Date.ToString("dd") @item.Date.ToString("MMM")</div>
+                        <div>@item.Date.ToString("yyyy")</div>
+                    </div>
+                    <div class="news-subject">
+                        @item.Headline
+                    </div>
+                </div>
+            </a>
+
+        }
+    </div>
+</section>
+
+        
+

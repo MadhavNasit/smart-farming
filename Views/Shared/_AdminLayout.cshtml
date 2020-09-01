@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title|Smart Farming</title>
+    <link rel="icon" href="@Url.Content("~/Images/farming-and-gardening.svg")" />
+    @Scripts.Render("~/bundles/jquery")
+
+    @Styles.Render("~/bundles/admincss")
+
+    @*<script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>*@
+    @*<link href="~/Css/Admin/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Css/Admin/style.css" rel="stylesheet" />*@
+
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Smart Farming</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="color:#fff; padding;padding-top: 6px!important;padding-bottom: 0!important;height: 33px;">Hi there, @HttpContext.Current.Session["Email"]</li>
+                <li>
+                    <a href="@Url.Action("LogOut","User")">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <h3>
+                <span aria-hidden="true"> </span> Admin Panel
+            </h3>
+        </div>
+    </header>
+    <!-- END HEADER -->
+    <!-- BREADCRUMB -->
+    <section id="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </section>
+    <!-- END BREADCRUMB -->
+    <!-- MAIN AREA -->
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <!-- SIDE NAVBAR -->
+                <div class="col-md-3">
+                    <div class="list-group">
+
+                        @Html.ActionLink("Manage Dealers", "ManageDealer", "Admin", new { @class = "list-group-item manage-dealer" })
+
+                        @Html.ActionLink("Manage Crops", "ManageCrops", "Admin", new { @class = "list-group-item manage-crop" })
+
+                        @Html.ActionLink("Manage Faqs", "ManageFaqs", "Admin", new { @class = "list-group-item manage-faq" })
+
+                        @Html.ActionLink("Add News", "ManageNews", "Admin", new { @class = "list-group-item manage-news" })
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+    <!-- END MAIN AREA -->
+</body>
+
+</html>

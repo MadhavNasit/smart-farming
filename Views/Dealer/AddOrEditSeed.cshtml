@@ -1,0 +1,404 @@
+﻿@model SmartFarming.Models.AddOrEditSeed
+
+@{
+    ViewBag.Title = "AddOrEditSeed";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add Seed
+            </h4>
+        </div>
+
+        <div class="panel with-nav-tabs panel-default" style="margin-bottom:0px;">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li id="add-seed" class="active"><a href="#menu1" data-toggle="tab">Seed Details</a></li>
+                    <li id="desc-seed"><a href="#menu2" data-toggle="tab">Description</a></li>
+                    <li id="packet-seed"><a href="#menu3" data-toggle="tab">Packing</a></li>
+                    <li id="image-upload"><a href="#menu4" data-toggle="tab">Image Upload</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("AddOrEditSeed", "Dealer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade in active" id="menu1">
+
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            @Html.HiddenFor(model => model.id)
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.crop_id, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.crop_id, new SelectList(Model.CropList, "id", "Name"), "Select Crop", new { @class = "form-control col-md-10" })
+                                        @Html.ValidationMessageFor(model => model.crop_id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.SeedName, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.SeedName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SeedName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Season, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Season, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Season, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.PestTolerance, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.PestTolerance, new List<SelectListItem> {
+                                                                new SelectListItem { Value = "Low" , Text = "Low" },
+                                                                new SelectListItem { Value = "Medium" , Text = "Medium" },
+                                                                new SelectListItem { Value = "High" , Text = "High" }
+                                                            }, new { @class = "form-control col-md-10" })
+                                        @Html.ValidationMessageFor(model => model.PestTolerance, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.GrowthHabit, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.GrowthHabit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GrowthHabit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Temp, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Temp, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Temp, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Fertilizer, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Fertilizer, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Fertilizer, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="button" value="Next" class="btn btn-primary seed-detail-submit" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade in" id="menu2">
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5" })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.PositiveFactor, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(model => model.PositiveFactor, new { @class = "form-control", rows = "5" })
+                                        @Html.ValidationMessageFor(model => model.PositiveFactor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.NegativeFactor, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(model => model.NegativeFactor, new { @class = "form-control", rows = "5" })
+                                        @Html.ValidationMessageFor(model => model.NegativeFactor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="button" value="Next" class="btn btn-primary seed-desc-submit" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade in" id="menu3">
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.PacketSize, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.PacketSize, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PacketSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.SeedsPerPacket, htmlAttributes: new { @class = "control-label" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.SeedsPerPacket, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SeedsPerPacket, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.MinQuentity, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MinQuentity, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MinQuentity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="button" value="Next" class="btn btn-primary seed-pack-submit" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade in" id="menu4">
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label " })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.Images, new { @class = "form-control image-upload-seed", type = "file", multiple = "multiple" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body" style="margin-top:10px">
+                                <div class="row gallery">
+                                    @if (Model.SeedImages != null)
+                                    {
+                                        foreach (var item in Model.SeedImages)
+                                        {
+                                            <div class="col-md-4" style="padding:10px;">
+                                                <img src="~/Images/@item" class="img-preview" />
+                                            </div>
+
+                                        }
+                                    }
+                                    
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-5 col-md-10">
+                                            <input type="submit" value="Submit" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        // Multiple images preview in browser
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<div class="col-md-4" style="padding:10px;"><img src="' + event.target.result + '" class="img-preview"></div>')).appendTo(placeToInsertImagePreview);
+
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('.image-upload-seed').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+        $('.seed-detail-submit').click(function () {
+            $('#menu1').removeClass("active show");
+            $('#menu2').addClass("active show");
+            $('#add-seed').removeClass("active");
+            $('#desc-seed').addClass("active");
+            $('html, body').animate({ scrollTop: '0px' }, 500);
+        });
+        $('.seed-desc-submit').click(function () {
+            $('#menu2').removeClass("active show");
+            $('#menu3').addClass("active show");
+            $('#desc-seed').removeClass("active");
+            $('#packet-seed').addClass("active");
+            $('html, body').animate({ scrollTop: '0px' }, 500);
+        });
+        $('.seed-pack-submit').click(function () {
+            $('#menu3').removeClass("active show");
+            $('#menu4').addClass("active show");
+            $('#packet-seed').removeClass("active");
+            $('#image-upload').addClass("active");
+            $('html, body').animate({ scrollTop: '0px' }, 500);
+        });
+        
+
+        $('#add-seed').click(function () {
+            $('#add-seed').addClass("active");
+            $('#desc-seed').removeClass("active");
+            $('#packet-seed').removeClass("active");
+            $('#image-upload').removeClass("active");
+        });
+        $('#desc-seed').click(function () {
+            $('#add-seed').removeClass("active");
+            $('#desc-seed').addClass("active");
+            $('#packet-seed').removeClass("active");
+            $('#image-upload').removeClass("active");
+        });
+        $('#packet-seed').click(function () {
+            $('#add-seed').removeClass("active");
+            $('#desc-seed').removeClass("active");
+            $('#packet-seed').addClass("active");
+            $('#image-upload').removeClass("active");
+        });
+        $('#image-upload').click(function () {
+            $('#add-seed').removeClass("active");
+            $('#desc-seed').removeClass("active");
+            $('#packet-seed').removeClass("active");
+            $('#image-upload').addClass("active");
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('.manage-pesticides').removeClass('active');
+        $('.manage-seeds').addClass('active');
+        $('.manage-fertilizers').removeClass('active');
+        $('.quatation').removeClass('active');
+    });
+</script>
+

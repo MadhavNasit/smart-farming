@@ -1,0 +1,161 @@
+﻿@model SmartFarming.Models.CropsViewModel
+@{
+    ViewBag.Title = "Crops";
+    ViewBag.Image = "banner4.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section style="padding-bottom:90px">
+    <div class="container py-1" style="background-color: #fff; margin-top:-40px; border-radius: .5em;">
+        <div class="card my-3">
+            <div class="d-flex card-header news-card-header">
+                Food Crops
+            </div>
+            <div class="card-body news-div custom-scroll">
+                <div class="row">
+                    @if (Model.FoodCrops != null)
+                    {
+                        foreach (var item in Model.FoodCrops)
+                        {
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <a href="@Url.Action("CropDetail","Home", new { id = item.id})">
+                                        <div class="card border-0 med-blog">
+                                            <div class="card-header p-0">
+                                                <img class="card-img-bottom" src="~/Images/@item.CropImage" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body border border-top-0">
+                                                <div class="mb-1">
+                                                    <h5 class="blog-title card-title m-0">
+                                                        @item.CropName
+                                                    </h5>
+                                                </div>
+                                                <div class="my-1"><b>Season :</b> @item.Season</div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+        <div class="card my-3">
+            <div class="d-flex card-header news-card-header">
+                Cash Crops
+            </div>
+            <div class="card-body news-div custom-scroll">
+                <div class="row">
+                    @if (Model.CashCrops != null)
+                    {
+                        foreach (var item in Model.CashCrops)
+                        {
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <a href="@Url.Action("CropDetail","Home", new { id = item.id})">
+                                        <div class="card border-0 med-blog">
+                                            <div class="card-header p-0">
+                                                <img class="card-img-bottom" src="~/Images/@item.CropImage" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body border border-top-0">
+                                                <div class="mb-1">
+                                                    <h5 class="blog-title card-title m-0">
+                                                        @item.CropName
+                                                    </h5>
+                                                </div>
+                                                <div class="my-1"><b>Season :</b> @item.Season</div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card my-3">
+            <div class="d-flex card-header news-card-header">
+                Plantation Crops
+            </div>
+            <div class="card-body news-div custom-scroll">
+                <div class="row">
+                    @if (Model.PlantationCrops != null)
+                    {
+                        foreach (var item in Model.PlantationCrops)
+                        {
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <a href="@Url.Action("CropDetail","Home", new { id = item.id})">
+                                        <div class="card border-0 med-blog">
+                                            <div class="card-header p-0">
+                                                <img class="card-img-bottom" src="~/Images/@item.CropImage" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body border border-top-0">
+                                                <div class="mb-1">
+                                                    <h5 class="blog-title card-title m-0">
+                                                        @item.CropName
+                                                    </h5>
+                                                </div>
+                                                <div class="my-1"><b>Season :</b> @item.Season</div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card my-3">
+            <div class="d-flex card-header news-card-header">
+                Horticulture Crops
+            </div>
+            <div class="card-body news-div custom-scroll">
+                <div class="row">
+                    @if (Model.HorticultureCrops != null)
+                    {
+                        foreach (var item in Model.HorticultureCrops)
+                        {
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <a href="@Url.Action("CropDetail","Home", new { id = item.id})">
+                                        <div class="card border-0 med-blog">
+                                            <div class="card-header p-0">
+                                                <img class="card-img-bottom" src="~/Images/@item.CropImage" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body border border-top-0">
+                                                <div class="mb-1">
+                                                    <h5 class="blog-title card-title m-0">
+                                                        @item.CropName
+                                                    </h5>
+                                                </div>
+                                                <div class="my-1"><b>Season :</b> @item.Season</div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

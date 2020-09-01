@@ -1,0 +1,16 @@
+﻿@model SmartFarming.Models.NewsView
+@{
+    ViewBag.Title = "NewsDetails";
+    ViewBag.Image = "contactus-banner1.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+    <section class="seed-details" style="padding-bottom:90px">
+        <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+            <h5>@Model.Headline</h5>
+            <a href="@Model.Link" target="_blank">@Model.Link</a>
+            <hr/>
+            <div><p>@Model.Text</p></div>
+        </div>
+    </section>
+

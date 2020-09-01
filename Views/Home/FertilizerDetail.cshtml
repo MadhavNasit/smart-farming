@@ -1,0 +1,65 @@
+﻿@model SmartFarming.Models.AddOrEditFertilizer
+@{
+    ViewBag.Title = "FertilizerDetail";
+    ViewBag.Image = "b2.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+    <section class="seed-details" style="padding-bottom:90px">
+        <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+            <div class="row">
+                <div class="col-md-4 d-flex align-items-stretch" style="border-right: 1px solid #adadad85;">
+                    <div class="d-flex justify-content-center" style="border: 1px solid #adadad85;">
+                        <img src="~/Images/@Model.FertilizerImage" width="100%" style="object-fit:contain" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h3>@Model.FertilizerName</h3>
+                    <div>
+                        <table class="table seed-details-table" style="margin-bottom:0px">
+                            <tbody>
+                                <tr>
+                                    <td>Material</td>
+                                    <td>@Model.Material</td>
+                                </tr>
+                                <tr>
+                                    <td>Packing Type</td>
+                                    <td>@Model.PackType</td>
+                                </tr>
+                                <tr>
+                                    <td>Pack Size</td>
+                                    <td>@Model.PackSize</td>
+                                </tr>
+                                <tr>
+                                    <td>Solubility</td>
+                                    <td>@Model.Solubility</td>
+                                </tr>
+                                <tr>
+                                    <td>Doses</td>
+                                    <td>@Model.Doses</td>
+                                </tr>
+                                <tr>
+                                    <td>PH Value</td>
+                                    <td>@Model.PHvalue</td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td>@Model.Price</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h4>Features</h4>
+                    <p>@Model.Features</p>
+                    <h4>How To Use</h4>
+                    <p>@Model.HowToUse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+

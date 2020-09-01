@@ -1,0 +1,1136 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  color: #3d3d3d;
+  letter-spacing: 1px;
+  /* font-family: 'Mada', sans-serif; */
+  font-family: karla,sans-serif;
+  background-color: rgb(249, 247, 242);
+  font-size: 14px;
+
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+a:hover{
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+.flex-fill{
+  flex: 1 !important;
+}
+button:focus{
+  outline: none;
+}
+
+select:disabled{
+  cursor: not-allowed;
+}
+
+h1{
+  font-size: 36px;
+}
+h2{
+  font-size: 32px;
+}
+h3{
+  font-size: 28px;
+}
+h4{
+  font-size: 24px;
+}
+h5{
+  font-size: 20px;
+}
+h6{
+  font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: karla,sans-serif;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.btn-green {
+  color: #fff;
+  background-color: #77b122;
+  border-color: #77b122;
+  border-radius: 0px;
+}
+.btn-green:hover {
+  background-color: #0f1112;
+  color: #fff;
+  box-shadow: none;
+}
+:focus {
+  outline: none;
+}
+.form-control:focus{
+  box-shadow: none;
+}
+.btn:focus{
+  box-shadow: none !important;
+}
+.nav-bottom-border
+{
+	padding: 15px 104.5px;
+	box-shadow: 0 5px 50px 0 rgba(0,0,0,.2);
+}
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.main-top {
+  background: linear-gradient(0deg, rgba(0,1,1,1) 0%, rgba(255,255,255,0) 100%) no-repeat bottom;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 450px;
+}
+
+.main-top-other{
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 250px;
+}
+
+.style-banner-other{
+  padding-top: 115px;
+  color: #fff;
+}
+.img-fluid {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  height: 100%;
+}
+/* Owl Carousel */
+#major-crops .owl-theme .owl-nav {
+  margin-top: 10px;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+}
+
+#major-crops .owl-carousel .owl-nav button.owl-prev {
+  position: absolute;
+  left: -10px;
+}
+
+#major-crops .owl-carousel .owl-nav button.owl-next{
+  position: absolute;
+  right: -10px;
+}
+
+.image-nav{
+  background-color: #fafafa !important;
+    border: 1px solid #dedede;
+    border-radius: 50% !important;
+    padding: 5px;
+    height: 40px;
+    width: auto;
+    box-shadow: 0 5px 50px 0 rgba(0,0,0,.2);
+}
+.image-nav:hover{
+    background-color: #e0dede !important;
+    transform: scale(1.2);
+    transition-duration: 1s;
+}
+
+/* header */
+
+/* Footer */
+footer
+{
+  padding: 20px 0px;
+  background-color: #757575;
+  color: #fff;
+}
+.footer-div
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-div a:hover
+{
+  color: #27ff01;
+}
+/* navigation */
+
+
+/* CSS Document */
+
+.toggle-2,
+.toggle,
+[id^=drop] {
+  display: none;
+}
+
+
+/* Giving a background-color to the nav container. */
+
+nav {
+  margin: 0;
+  padding: 0;
+}
+
+#logo a {
+  float: left;
+  display: initial;
+  font-weight: 700;
+  font-size: 35px;
+  letter-spacing: 1px;
+  color: #fff;
+  padding: 0;
+}
+
+
+/* Since we'll have the "ul li" "float:left"
+* we need to add a clear after the container. */
+
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Removing padding, margin and "list-style" from the "ul",
+* and adding "position:reltive" */
+
+nav ul {
+  float: right;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+
+/* Positioning the navigation items inline */
+
+nav ul li {
+  margin: 0px;
+  display: inline-block;
+  float: left;
+}
+
+
+/* Styling the links */
+
+.bg-transperent ul li a {
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 14px;
+  letter-spacing: 2px;
+  background: transparent;
+  padding: 7px 20px;
+  display: inline-block;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.bg-white ul li a {
+  color: #3d3d3d;
+  text-transform: capitalize;
+  font-size: 14px;
+  letter-spacing: 2px;
+  background: transparent;
+  padding: 7px 20px;
+  display: inline-block;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.menu li .drop-text:hover {
+  color: #fff;
+  border: none;
+}
+
+
+/* Background color change on Hover */
+
+
+/*.menu li.active a,.menu li a:hover{border-bottom: 1px solid #d4d4d4;}*/
+
+.bg-white .menu li a:hover {
+  opacity: 0.8;
+  color: #24b909;
+  text-decoration: none;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+.bg-transperent .menu li a:hover {
+  opacity: 0.8;
+  color: #b8ffb3;
+  text-decoration: none;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+/* Hide Dropdowns by Default
+* and giving it a position of absolute */
+
+.bg-white ul ul {
+  display: none;
+  position: absolute;
+  top: 33px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: -1px 1px 5px black;
+}
+.bg-transperent ul ul {
+  display: none;
+  position: absolute;
+  top: 33px;
+  background: #000;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: -1px 1px 5px black;
+}
+
+/* Display Dropdowns on Hover */
+
+nav ul li:hover>ul {
+  display: inherit;
+}
+
+
+/* Fisrt Tier Dropdown */
+
+nav ul ul li {
+  width: 170px;
+  float: none;
+  display: list-item;
+  position: relative;
+}
+
+nav ul ul li a {
+  color: #fff;
+  padding: 5px 10px;
+  display: block;
+  background: transparent;
+}
+
+
+/* Second, Third and more Tiers	
+* We move the 2nd and 3rd etc tier dropdowns to the left
+* by the amount of the width of the first tier.
+*/
+
+nav ul ul ul li {
+  position: relative;
+  top: -60px;
+  /* has to be the same number as the "width" of "nav ul ul li" */
+  left: 170px;
+}
+
+
+/* Change ' +' in order to change the Dropdown symbol */
+
+li>a:only-child:after {
+  content: '';
+}
+
+a.reqe-button {
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+}
+
+
+/* Media Queries
+--------------------------------------------- */
+
+@media(max-width: 800px) {
+  nav a {
+    font-size: 13px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  #logo {
+    display: block;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    float: none;
+  }
+  nav {
+    margin: 0;
+  }
+  /* Hide the navigation menu by default */
+  /* Also hide the  */
+  .toggle+a,
+  .menu {
+    display: none;
+  }
+  /* Stylinf the toggle lable */
+  .toggle {
+    display: block;
+    padding: 6px 17px;
+    font-size: 14px;
+    text-decoration: none;
+    border: none;
+    float: right;
+    background-color: #fd5c63;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .menu .toggle {
+    float: none;
+    text-align: center;
+    margin: auto;
+    max-width: 138px;
+    padding: 10px 18px;
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  .menu .toggle:hover {
+    color: #000;
+	opacity:.8;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  .toggle:hover {
+    color: #000;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  label.toggle.toogle-2 {
+    background: transparent;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: #000;
+  }
+  /* Display Dropdown when clicked on Parent Lable */
+  [id^=drop]:checked+ul {
+    display: block;
+    background: #fd5c63;
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+	z-index: 999;	
+  }
+  /* Change menu item's width to 100% */
+  nav ul li {
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+  }
+  nav ul ul .toggle,
+  nav ul ul a {
+    padding: 0 40px;
+  }
+  nav ul ul ul a {
+    padding: 0 80px;
+  }
+  nav a:hover,
+  nav ul ul ul a {
+    background-color: transparent;
+  }
+  nav ul li ul li .toggle,
+  nav ul ul a,
+  nav ul ul ul a {
+    padding: 14px 20px;
+    color: #FFF;
+    font-size: 15px;
+  }
+  /* 
+nav ul li ul li .toggle,
+nav ul ul a {
+background-color: #212121;
+} */
+  /* Hide Dropdowns by Default */
+  nav ul ul {
+    float: none;
+    position: static;
+    color: #ffffff;
+    /* has to be the same number as the "line-height" of "nav a" */
+  }
+  /* Hide menus on hover */
+  nav ul ul li:hover>ul,
+  nav ul li:hover>ul {
+    display: none;
+  }
+  /* Fisrt Tier Dropdown */
+  nav ul ul li {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+  nav ul ul ul li {
+    position: static;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+  }
+  nav a {
+    color: #000;
+    font-size: 15px;
+  }
+  .menu li.active a,
+  .menu li a:hover {
+    background: transparent;
+  }
+}
+
+@media all and (max-width: 568px) {
+  nav a,
+  .menu .toggle,
+  nav ul li ul li .toggle,
+  nav ul ul a,
+  nav ul ul ul a {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  nav a,
+  .menu .toggle,
+  nav ul li ul li .toggle,
+  nav ul ul a,
+  nav ul ul ul a {
+    font-size: 13px;
+  }
+}
+
+
+/*-- dropdown --*/
+/* banner */
+
+
+
+.style-banner {
+  padding-top: 160px;
+}
+
+.style-banner h3 {
+  color: #fff;
+}
+
+.two-demo-button p {
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.main-banner h1 {
+  color: #fff;
+  font-weight: 700;
+}
+
+.view-buttn a {
+  font-size: 19px;
+  color: #fd5c63;
+  text-decoration: none;
+  text-transform: capitalize;
+  display: inline-block;
+  letter-spacing: 1px;
+  outline: none;
+  font-weight: 700;
+  border-radius: 0px;
+  /* background-color: #fd5c63; */
+  padding: 5px 3px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.view-buttn a:hover,
+button.btn1:hover,
+.sent-butnn:hover {
+  opacity: 0.8;
+}
+
+/* Compare Tractor */
+.tractor-image
+{
+  padding: 20px 50px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.col-border{
+  border: 1px solid rgb(238, 238, 238);
+  border-right: none;
+}
+.right-border{
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.theme-btn {
+  background-color: #77b122;
+  -webkit-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  min-width: 140px;
+  height: 40px;
+  color: #fff;
+  border-radius: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 15px 0px;
+}
+.theme-btn:hover, .famie-btn:focus {
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #0f1112;
+  color: #fff;
+  box-shadow: none;
+}
+
+.tractor-main-box{
+  padding: 0px 35px;
+}
+.tractor-list
+{
+  padding: 0px 15px;
+    margin-top: 20px;
+    line-height: 28px;
+    list-style: none;
+}
+.tractor-brand{
+  color: #d3333b;
+  font-size: 18px;
+  font-weight: bold;
+}
+.tractor-model{
+  color: #2f6815;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.compare-tractor .card-header
+{
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+.compare-tractor .card-body
+{
+  padding: 0;
+}
+
+.tractor-table tbody tr td{
+  text-transform: capitalize;
+    width: 25%;
+}
+
+/* Seed details Page */
+/* Thumb Gllery Code */
+.swiper-container {
+  width: 100%;
+  height: inherit;
+  margin-left: 5px;
+    margin-right: 5px;
+}
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+.gallery-top {
+  width: 80%;
+}
+.gallery-thumbs {
+  width: 20%;
+  box-sizing: border-box;
+  padding: 0;
+}
+.gallery-thumbs .swiper-slide {
+  width:100%;
+  height: 25%;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.img-gallery{
+  display: flex;
+  flex-direction: row-reverse;
+}
+/* Seed Detail Side Panel */
+.price-label
+{
+  font-size: 16px;
+  font-weight: 700;
+}
+.seed-details-table td
+{
+  border-bottom: 1px solid #dee2e6;
+  border-top:none;
+  padding: .4rem;
+}
+.seed-details-table td:nth-child(1)
+{
+  color: #848484;
+  width: 40%;
+}
+.seed-details-table td:nth-child(2)
+{
+  color: #000;
+  width: 60%;
+}
+.get-quatation {
+  background: rgb(249, 247, 242);;
+  padding: 12px 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0px auto;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+}
+.seed-image
+{
+  height: 150px;
+  width: 100%;
+  background-color: #fff;
+  object-fit: contain;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+}
+.left-color-modal
+{
+  /* background: #fafafa; */
+  background: linear-gradient(90deg, #dedede 30%, #fff 0%);
+}
+.left-color-modal p
+{
+  margin-bottom: 2px;;
+}
+.left-div-modal
+{
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+.right-div-modal
+{
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+.right-div-modal-body{
+  margin: 60px 0px;
+}
+
+.seed-modal-contact
+{
+  position: relative;
+}
+.seed-modal-contact-country-code
+{
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 3;
+  line-height: 36px;
+  background-color: #e2e2e2;
+  padding: 0px 7px;
+  border-radius: 4px;
+}
+
+/* --Seed Descroption Section */
+a:hover,a:focus{
+  outline: none;
+  text-decoration: none;
+}
+.tab .nav-tabs{
+  background: #fff;
+  padding: 14px 0px;
+  position: sticky;
+    top: 80px;
+}
+.tab .nav-tabs li{
+  text-align: center;
+  margin-right: 3px;
+}
+header.sticky {
+  border-bottom: 2px solid #77b122;;
+}
+.tab .nav-tabs li a{
+  font-size: 15px;
+  font-weight: 600;
+  color: #22272c;
+  padding: 15px 25px;
+  background: #eee;
+  margin-right: 0;
+  border-radius: 0;
+  border: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.5s ease 0s;
+}
+.tab .nav-tabs li a.active,
+.tab .nav-tabs li a:hover{
+  background: #77b122;
+  color: #fff;
+  border: none;
+}
+.tab .nav-tabs li a.active:after {
+  content: "";
+  position: absolute;
+  bottom: -21px;
+  left: 42%;
+  border: 10px solid transparent;
+  border-top-color: #77b122;
+}
+.tab .tab-content{
+  font-size: 14px;
+  color: #3d3537;
+  line-height: 24px;
+  padding: 30px 40px;
+  border: 2px solid #77b122;
+}
+.tab .tab-content h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0;
+}
+@media only screen and (max-width: 480px){
+  .tab .nav-tabs li{ width: 100%; }
+}
+
+/* Custom Scroll */
+.custom-scroll::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	background-color: #F5F5F5;
+}
+
+.custom-scroll::-webkit-scrollbar
+{
+  width: 7px;
+	background-color: #F5F5F5;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb
+{
+	
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  border-radius: 5px;
+	background-color: #3d3d3d3a;
+}
+
+
+/* Contact Us */
+
+.section-heading {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+.section-heading p {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.section-heading h2 {
+  margin-bottom: 10px;
+  font-size: 36px;
+  margin-left: -3px;
+}
+.section-heading h2 span {
+  color: #77b122;
+}
+.section-heading img {
+  height: auto;
+  max-width: 100%;
+}
+
+.contact-us-form .form-control,
+.seed-details .form-control {
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  width: 100%;
+  background-color: #fff;
+  font-size: 12px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  color: #707070;
+  -webkit-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  transition-duration: 500ms;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
+}
+.contact-us-form .form-control:focus,
+.seed-details .form-control:focus {
+  box-shadow: none;
+  background-color: #fff;
+  border-color: #77b122;
+}
+.contact-us-form textarea.form-control {
+  height: 100px;
+}
+
+/* Faqs */
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+  border: 1px solid #28a745;
+  background: #28a745;
+  font-weight: normal;
+  color: #fff;
+  font-weight: 700;
+}
+.ui-accordion .ui-accordion-header {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 2px 0 0 0;
+  padding: .5em .5em .5em .7em;
+  font-size: 110%;
+  
+}
+.ui-accordion .ui-accordion-icons {
+  padding-left: 0.7em;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+  position: absolute;
+  left: unset;
+  top: 35%;
+  right: .5em;
+}
+.ui-accordion .ui-accordion-content {
+padding: 1em .7em;
+border-top: 0;
+overflow: auto;
+}
+.width-fix {
+  width: 50px;
+  display: block;
+  float: left;
+}
+
+
+/* About Us */
+.about-us-img::after {
+  position: absolute;
+  content: '';
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: url(../images/logo-white.png) no-repeat center;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-size: contain;
+  z-index: 2;
+  top: 0;
+  left: 35px;
+}
+
+#about-us .flex-fill{
+  flex: 1;
+  text-align: center;
+}
+
+/* Daily Price */
+.btn-theme-default {
+  background-color: #77b122;
+  -webkit-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: relative;
+  border-radius: .25rem;
+  z-index: 1;
+  display: inline-block;
+  color: #fff;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 15px 0px;
+}
+.btn-theme-default:hover, .famie-btn:focus {
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #0f1112;
+  color: #fff;
+  box-shadow: none;
+}
+.btn-theme-default:hover, .famie-btn:focus {
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #469a59;
+  color: #ffffff;
+  box-shadow: none;
+}
+select
+{
+  cursor: pointer;
+}
+
+/* Loading Circle */
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  margin: 0px auto;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+thead th { 
+  position: sticky; top: 80px; 
+}
+
+/* Home Page Css */
+.main-top .main-banner
+{
+  height: 450px;
+  position: relative;
+}
+.main-banner-body
+{
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.news-card-header{
+  background: url(../images/texture-card.jpg);
+  color: #fff;
+}
+
+.news-div{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.news-sub-div
+{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 0 14px 0 rgba(0,0,0,.15);
+}
+.news-date
+{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+  font-weight: 700;
+  color: #77b122;
+  width: 14%;
+  line-height: normal;
+}
+.news-subject
+{
+  align-self: center;
+  flex: 1;
+  text-align: left;
+}
+#news-price .card-header
+{
+  font-weight: 700;
+}
+
+/* Our Service */
+.farming-icon {
+  position: absolute;
+  -webkit-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  transition-duration: 500ms;
+  left: 50%;
+  margin-left: -40px;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 40px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+}
+.our-service-body:hover .farming-icon
+{
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.26);
+}
+.our-service-body p{
+  margin-bottom: 2px;
+}
+.card-img-bottom{
+  height: 180px;
+  object-fit: cover;
+}
+.our-service-body:hover h5{
+  color: #77b122;
+}
+
+/* Crops */
+#crop-tab li
+{
+  padding-bottom: 4px;
+}
+.tab #crop-tab li a
+{
+  display: block;
+  font-size: 14px;
+  padding: 10px 10px;
+}
+.tab #crop-tab li a.active:after{
+  content: "";
+  position: absolute;
+  bottom: 28%;
+    left: 100%;
+  border: 10px solid transparent;
+  border-left-color: #77b122
+}
+.tab #crop-tab
+{
+  padding: 0;
+}
+#crop-tab
+{
+  border: none;
+}

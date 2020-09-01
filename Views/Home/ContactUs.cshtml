@@ -1,0 +1,67 @@
+﻿@model SmartFarming.Models.ContactUs
+@{
+    ViewBag.Title = "ContactUs";
+    ViewBag.Image = "contactus-banner1.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section style="padding-bottom:90px">
+    <div class="container pb-2 pt-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+        <div class="p-3">
+            <div class="row">
+                <div class="col-lg-5 about-imgs-txt ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.8525959887916!2d70.74104731429668!3d22.24567088535199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959cb0bae890265%3A0x791c3a55d1ba2885!2sGovernments%20Engineering%20College%2C%20Rajkot!5e0!3m2!1sen!2sin!4v1588408762349!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="false" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="col-lg-7 about-two-grids">
+                    <div class="section-heading ">
+                        <p>Contact now</p>
+                        <h2><span>Get In Touch</span> With Us</h2>
+                        <img src="~/images/decor.png" alt="">
+                    </div>
+                    <div class="text-success" id="fade-out">@TempData["Submit"]</div>
+                    <div class="contact-us-form">
+                        @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, htmlAttributes: new { @style = "margin-top: 20px;" }))
+                        {
+                                <div class="form-group" style="margin-bottom: 0px;">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Name" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact" } })
+                                            @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", placeholder = "Your Subject" } })
+                                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextAreaFor(model => model.Text, new { @class = "form-control", placeholder = "Your Message", rows = "5"})
+                                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col text-center mt-3 mb-3 ">
+                                    <button class="btn theme-btn">Send Message</button>
+                                </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $("#fade-out").show().delay(5000).fadeOut();
+</script>
+

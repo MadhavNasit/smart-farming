@@ -1,0 +1,342 @@
+﻿@model SmartFarming.Models.homeModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="news-price" class="my-5">
+    <div class="container">
+        <div class="section-heading text-center">
+            <p>Keep Up to Date</p>
+            <h2><span>News And</span> Daily Price</h2>
+            <img src="~/Images/decor2.png" alt="">
+        </div>
+        <div class="row">
+            <div class="col-md-9" style="padding-right: 7px;">
+                <div class="card">
+                    <div class="d-flex card-header news-card-header">
+                        NEWS & ANNOUNCEMENTS
+                    </div>
+                    <div class="card-body news-div custom-scroll" id="auto-scroll-div">
+                        @foreach (var item in Model.News)
+                        {
+                        <a href="@Url.Action("NewsDetails","Home", new { id = item.id})">
+                            <div class="news-sub-div my-1 p-2">
+                                <div class="news-date">
+                                    <div>@item.Date.ToString("dd") @item.Date.ToString("MMM")</div>
+                                    <div>@item.Date.ToString("yyyy")</div>
+                                </div>
+                                <div class="news-subject">
+                                    @item.Headline
+                                </div>
+                            </div>
+                        </a>
+                            
+                        }
+
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("More Details", "News", "Home", new { @class="btn btn-green", style="float: right;" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="padding-left: 7px;">
+                <div class="card">
+                    <div class="d-flex card-header news-card-header">
+                        Daily Price
+                    </div>
+                    <div class="card-body" id="daily-price-height">
+                        <div class="daily-price-div">
+                            <table class="table seed-details-table">
+                                <tbody>
+                                    <tr>
+                                        <td>Cotton</td>
+                                        <td><i class="fa fa-rupee"></i> 920</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rice</td>
+                                        <td><i class="fa fa-rupee"></i> 3500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cabbage</td>
+                                        <td><i class="fa fa-rupee"></i> 350</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bhindi</td>
+                                        <td><i class="fa fa-rupee"></i> 1400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Green Chilli</td>
+                                        <td><i class="fa fa-rupee"></i> 2100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brinjal</td>
+                                        <td><i class="fa fa-rupee"></i> 1850</td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("More Details", "DailyPrice", "Home", new { @class = "btn btn-green", style = "float: right;" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="major-crops" class="my-5 py-5" style="background-color: #fff;">
+    <div class="container pb-xl-5 pb-lg-3">
+        <div class="section-heading text-center">
+            <p>Crops List</p>
+            <h2><span>Major Crops</span> And Cropping Patterns</h2>
+            <img src="~/Images/decor2.png" alt="">
+        </div>
+        <div class="owl-carousel owl-theme">
+            @foreach (var item in Model.Crops)
+            {
+                <div class="item">
+                    <a href="@Url.Action("CropDetail","Home", new { id = item.id})">
+                        <div class="card border-0 med-blog">
+                            <div class="card-header p-0">
+                                <img class="card-img-bottom" src="~/Images/@item.CropImage" alt="Card image cap">
+                            </div>
+                            <div class="card-body border border-top-0">
+                                <div class="mb-1">
+                                    <h5 class="blog-title card-title m-0">
+                                        @item.CropName
+                                    </h5>
+                                </div>
+                                <p><b>Crop Type :</b> @item.CropType</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            }
+
+        </div>
+        <button class="btn btn-green my-3 play" style="float: left;">Play</button>
+        <button class="btn btn-green my-3 stop" style="float: left;">Stop</button>
+        @Html.ActionLink("More Details", "Crops", "Home", new { @class = "btn btn-green my-3", style = "float: right;" })
+    </div>
+</section>
+
+<section id="our-services" class="my-5">
+    <div class="container">
+        <div class="section-heading text-center">
+            <p>OURS SERVICES</p>
+            <h2><span>What Should</span> You Expect</h2>
+            <img src="~/Images/decor2.png" alt="">
+        </div>
+        <div class="row">
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("Pesticides","Home")" class="card border-0 our-service-body">
+
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/g1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/pesticides-icon.png" height="40px" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>Farming Practices for</p>
+                            <h5 class="blog-title card-title m-0">
+                                Pesticides Management
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("Fertilizers","Home")" class="card border-0 our-service-body">
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/g1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/fertilizer-icon.png" height="50px" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>Farming Practices for</p>
+                            <h5 class="blog-title card-title m-0">
+                                Nutrient Management & Fertilizers
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("Seeds","Home")" class="card border-0 our-service-body">
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/g1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/seed-icon-green.png" height="35px" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>Farming Practices for</p>
+                            <h5 class="blog-title card-title m-0">
+                                Sowing Seeds
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+        </div>
+
+    </div>
+</section>
+
+<section id="our-services" class="mt-5 py-5" style="background-color: #fff;">
+    <div class="container">
+        <div class="section-heading text-center">
+            <p>OURS FEATURES</p>
+            <h2><span>Discover</span> Our Features</h2>
+            <img src="~/Images/decor2.png" alt="">
+        </div>
+        <div class="row">
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("TractorCompare","Home")" class="card border-0 our-service-body">
+
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/tractor-banner.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/tractor-icon2.png" height="40px" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>We Provide Feature of</p>
+                            <h5 class="blog-title card-title m-0">
+                                Tractor Comparison
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("DailyPrice","Home")" class="card border-0 our-service-body">
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/g1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/crop.png" height="50px" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>We Provide Details of</p>
+                            <h5 class="blog-title card-title m-0">
+                                Daily Price of Crop
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+            <!-- blog grid -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <a href="@Url.Action("News","Home")" class="card border-0 our-service-body">
+                    <div class="card-header p-0">
+                        <div>
+                            <img class="card-img-bottom" src="~/Images/g1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-body border border-top-0 text-center" style="position: relative;">
+                        <div class="farming-icon">
+                            <img src="~/Images/govt-scheme-icon.png" height="43px" style="padding-bottom: 5px;" />
+                        </div>
+                        <div class="mb-2 mt-5">
+                            <p>We Provide Details of</p>
+                            <h5 class="blog-title card-title m-0">
+                                Government Schemes
+                            </h5>
+                        </div>
+                        <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- //blog grid -->
+        </div>
+
+    </div>
+</section>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+
+    var priceHeight = $('#daily-price-height').outerHeight();
+    $("#auto-scroll-div").css("height", priceHeight)
+    $("#auto-scroll-div").scroller();
+
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: ["<div class='nav-btn prev-slide'><img class='image-nav' src='../images/prev-btn.png'/></div>", "<div class='nav-btn next-slide'><img class='image-nav' src='../images/next-btn.png'/></div>"],
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+    var owl = $('.owl-carousel');
+    $('.play').hide();
+    $('.play').on('click', function () {
+        owl.trigger('play.owl.autoplay', [1000])
+        $('.play').hide();
+        $('.stop').show();
+    })
+    $('.stop').on('click', function () {
+        owl.trigger('stop.owl.autoplay')
+        $('.play').show();
+        $('.stop').hide();
+    })
+</script>

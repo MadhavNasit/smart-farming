@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartFarmingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="state_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactUs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Subject" Type="varchar" MaxLength="1000" />
+    <Property Name="Text" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Crops">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CropName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CropDesc" Type="varchar(max)" />
+    <Property Name="Kharif" Type="bit" />
+    <Property Name="Rabi" Type="bit" />
+    <Property Name="Zaid" Type="bit" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="CropImage" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Temp" Type="varchar" MaxLength="50" />
+    <Property Name="RainFall" Type="varchar" MaxLength="50" />
+    <Property Name="SoilType" Type="varchar" MaxLength="100" />
+    <Property Name="HighestProducers" Type="int" />
+    <Property Name="LandPreparation" Type="varchar(max)" />
+    <Property Name="SowingMethod" Type="varchar(max)" />
+    <Property Name="Harvesting" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CropTypes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Croptype" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Faqs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Answer" Type="varchar" MaxLength="2000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fertilizers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dealer_id" Type="int" Nullable="false" />
+    <Property Name="crop_id" Type="int" Nullable="false" />
+    <Property Name="FertilizerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FertilizerImage" Type="varchar" MaxLength="100" />
+    <Property Name="Material" Type="varchar" MaxLength="200" />
+    <Property Name="PackType" Type="varchar" MaxLength="100" />
+    <Property Name="PackSize" Type="varchar" MaxLength="200" />
+    <Property Name="Features" Type="varchar" MaxLength="1000" />
+    <Property Name="Solubility" Type="varchar" MaxLength="50" />
+    <Property Name="Doses" Type="varchar" MaxLength="500" />
+    <Property Name="PHvalue" Type="varchar" MaxLength="50" />
+    <Property Name="HowToUse" Type="varchar(max)" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="MajorProducers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="crop_id" Type="int" Nullable="false" />
+    <Property Name="state_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Headline" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Text" Type="varchar(max)" />
+    <Property Name="Link" Type="varchar" MaxLength="500" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pesticides">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dealer_id" Type="int" Nullable="false" />
+    <Property Name="crop_id" Type="int" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+    <Property Name="PesticideName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PesticideImage" Type="varchar" MaxLength="200" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="PackingType" Type="varchar" MaxLength="50" />
+    <Property Name="Dosage" Type="varchar" MaxLength="500" />
+    <Property Name="Formulation" Type="varchar" MaxLength="50" />
+    <Property Name="PesticideDescription" Type="varchar(max)" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Quotation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="seed_id" Type="int" />
+    <Property Name="pesticide_id" Type="int" />
+    <Property Name="fertilizer_id" Type="int" />
+    <Property Name="dealer_id" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartFarming.dbo.SeedFaqs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SeedFaqs">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="seed_id" />
+      <PropertyRef Name="Question" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="seed_id" Type="int" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Answer" Type="varchar(max)" />
+    <Property Name="Posted" Type="bit" />
+  </EntityType>
+  <EntityType Name="SeedImages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="seed_id" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Seeds">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="crop_id" Type="int" Nullable="false" />
+    <Property Name="dealer_id" Type="int" Nullable="false" />
+    <Property Name="SeedName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Season" Type="varchar" MaxLength="50" />
+    <Property Name="PestTolerance" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="Duration" Type="varchar" MaxLength="50" />
+    <Property Name="MinQuentity" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="PacketSize" Type="varchar" MaxLength="150" />
+    <Property Name="GrowthHabit" Type="varchar" MaxLength="100" />
+    <Property Name="PositiveFactor" Type="varchar(max)" />
+    <Property Name="NegativeFactor" Type="varchar(max)" />
+    <Property Name="Temp" Type="varchar" MaxLength="50" />
+    <Property Name="Fertilizer" Type="varchar" MaxLength="200" />
+    <Property Name="Height" Type="varchar" MaxLength="100" />
+    <Property Name="SeedsPerPacket" Type="int" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tractors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dealer_id" Type="int" Nullable="false" />
+    <Property Name="ModelName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TractorImage" Type="varchar" MaxLength="200" />
+    <Property Name="Capacity" Type="int" />
+    <Property Name="Clutch" Type="varchar" MaxLength="200" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="NoOfCylinder" Type="int" />
+    <Property Name="HpCategory" Type="int" />
+    <Property Name="EngineRatedRPM" Type="varchar" MaxLength="50" />
+    <Property Name="Cooling" Type="varchar" MaxLength="50" />
+    <Property Name="AirFilter" Type="varchar" MaxLength="50" />
+    <Property Name="Brake" Type="varchar" MaxLength="100" />
+    <Property Name="Battery" Type="varchar" MaxLength="50" />
+    <Property Name="GearBox" Type="varchar" MaxLength="200" />
+    <Property Name="Steering" Type="varchar" MaxLength="100" />
+    <Property Name="FuelTank" Type="varchar" MaxLength="50" />
+    <Property Name="Accessories" Type="varchar(max)" />
+    <Property Name="Features" Type="varchar" MaxLength="500" />
+    <Property Name="Warranty" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="TotalWeight" Type="int" />
+    <Property Name="GroundClearance" Type="int" />
+    <Property Name="TurningRadius" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="city_id" Type="int" />
+    <Property Name="state_id" Type="int" />
+  </EntityType>
+  <Association Name="FK_Cities_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Crops_CropTypes">
+    <End Role="CropTypes" Type="Self.CropTypes" Multiplicity="1" />
+    <End Role="Crops" Type="Self.Crops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropTypes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Crops">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Crops_States">
+    <End Role="States" Type="Self.States" Multiplicity="0..1" />
+    <End Role="Crops" Type="Self.Crops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Crops">
+        <PropertyRef Name="HighestProducers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fertilizers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Fertilizers" Type="Self.Fertilizers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fertilizers">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MajorProducers_Crops">
+    <End Role="Crops" Type="Self.Crops" Multiplicity="1" />
+    <End Role="MajorProducers" Type="Self.MajorProducers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Crops">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MajorProducers">
+        <PropertyRef Name="crop_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MajorProducers_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="MajorProducers" Type="Self.MajorProducers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MajorProducers">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pesticides_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Pesticides" Type="Self.Pesticides" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pesticides">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Fertilizers">
+    <End Role="Fertilizers" Type="Self.Fertilizers" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fertilizers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="fertilizer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Pesticides">
+    <End Role="Pesticides" Type="Self.Pesticides" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pesticides">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="pesticide_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Seeds">
+    <End Role="Seeds" Type="Self.Seeds" Multiplicity="0..1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seeds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="seed_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeedImages_Seeds">
+    <End Role="Seeds" Type="Self.Seeds" Multiplicity="1" />
+    <End Role="SeedImages" Type="Self.SeedImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seeds">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SeedImages">
+        <PropertyRef Name="seed_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seeds_Crops">
+    <End Role="Crops" Type="Self.Crops" Multiplicity="1" />
+    <End Role="Seeds" Type="Self.Seeds" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Crops">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seeds">
+        <PropertyRef Name="crop_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seeds_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Seeds" Type="Self.Seeds" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seeds">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tractors_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Tractors" Type="Self.Tractors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tractors">
+        <PropertyRef Name="dealer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_States">
+    <End Role="States" Type="Self.States" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="state_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SmartFarmingModelStoreContainer">
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Crops" EntityType="Self.Crops" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CropTypes" EntityType="Self.CropTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faqs" EntityType="Self.Faqs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fertilizers" EntityType="Self.Fertilizers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MajorProducers" EntityType="Self.MajorProducers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pesticides" EntityType="Self.Pesticides" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeedImages" EntityType="Self.SeedImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seeds" EntityType="Self.Seeds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tractors" EntityType="Self.Tractors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeedFaqs" EntityType="Self.SeedFaqs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SeedFaqs].[id] AS [id], 
+    [SeedFaqs].[seed_id] AS [seed_id], 
+    [SeedFaqs].[Question] AS [Question], 
+    [SeedFaqs].[Answer] AS [Answer], 
+    [SeedFaqs].[Posted] AS [Posted]
+    FROM [dbo].[SeedFaqs] AS [SeedFaqs]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Cities_States" Association="Self.FK_Cities_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Crops_CropTypes" Association="Self.FK_Crops_CropTypes">
+      <End Role="CropTypes" EntitySet="CropTypes" />
+      <End Role="Crops" EntitySet="Crops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Crops_States" Association="Self.FK_Crops_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Crops" EntitySet="Crops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fertilizers_Users" Association="Self.FK_Fertilizers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Fertilizers" EntitySet="Fertilizers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MajorProducers_Crops" Association="Self.FK_MajorProducers_Crops">
+      <End Role="Crops" EntitySet="Crops" />
+      <End Role="MajorProducers" EntitySet="MajorProducers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MajorProducers_States" Association="Self.FK_MajorProducers_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="MajorProducers" EntitySet="MajorProducers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pesticides_Users" Association="Self.FK_Pesticides_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Pesticides" EntitySet="Pesticides" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Fertilizers" Association="Self.FK_Quotation_Fertilizers">
+      <End Role="Fertilizers" EntitySet="Fertilizers" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Pesticides" Association="Self.FK_Quotation_Pesticides">
+      <End Role="Pesticides" EntitySet="Pesticides" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Seeds" Association="Self.FK_Quotation_Seeds">
+      <End Role="Seeds" EntitySet="Seeds" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Users" Association="Self.FK_Quotation_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeedImages_Seeds" Association="Self.FK_SeedImages_Seeds">
+      <End Role="Seeds" EntitySet="Seeds" />
+      <End Role="SeedImages" EntitySet="SeedImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seeds_Crops" Association="Self.FK_Seeds_Crops">
+      <End Role="Crops" EntitySet="Crops" />
+      <End Role="Seeds" EntitySet="Seeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seeds_Users" Association="Self.FK_Seeds_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Seeds" EntitySet="Seeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tractors_Users" Association="Self.FK_Tractors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tractors" EntitySet="Tractors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Cities" Association="Self.FK_Users_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_States" Association="Self.FK_Users_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

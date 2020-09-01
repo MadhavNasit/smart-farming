@@ -1,0 +1,239 @@
+﻿@model SmartFarming.Models.AddCrop
+
+@{
+    ViewBag.Title = "AddCrop";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add Dealer
+            </h4>
+        </div>
+        @using (Html.BeginForm("AddCrop", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.CropImage)
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CropName, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.CropName, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.CropName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.Label("Season Type", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6" style="margin-top:5px">
+                        @Html.CheckBoxFor(model => model.Kharif, new { @class = "col-md-1" })
+                        @Html.LabelFor(model => model.Kharif, htmlAttributes: new { @class = "col-md-3" })
+                        @Html.CheckBoxFor(model => model.Rabi, new { @class = "col-md-1" })
+                        @Html.LabelFor(model => model.Rabi, htmlAttributes: new { @class = "col-md-3" })
+                        @Html.CheckBoxFor(model => model.Zaid, new { @class = "col-md-1" })
+                        @Html.LabelFor(model => model.Zaid, htmlAttributes: new { @class = "col-md-3" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.Label("Type of Crop", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.type_id, new SelectList(Model.Types, "id", "Croptype1", Model.type_id), "Select Type", new { @class = "form-control col-md-6" })
+                        @Html.ValidationMessageFor(model => model.type_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CropImage, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" class="form-control" title="search image" id="file" name="file" onchange="show(this)" />
+                    </div>
+                    <div class="col-md-4" style="position:relative">
+                        <img id="demo_img" height="80" width="140" style="position:absolute; display:none" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Temp, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Temp, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.Temp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.RainFall, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.RainFall, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.RainFall, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.SoilType, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.SoilType, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                        @Html.ValidationMessageFor(model => model.SoilType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CropDesc, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.CropDesc, new { @class = "form-control col-md-10", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.CropDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.LandPreparation, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.LandPreparation, new { @class = "form-control col-md-10", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.LandPreparation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.SowingMethod, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.SowingMethod, new { @class = "form-control col-md-10", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.SowingMethod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" style="margin-top:10px">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Harvesting, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Harvesting, new { @class = "form-control col-md-10", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.Harvesting, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.HighestProducers, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.HighestProducers, new SelectList(Model.States, "id", "State1"), "Select State", new { @class = "form-control col-md-6" })
+                        @Html.ValidationMessageFor(model => model.HighestProducers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.MajorProducers, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownList("MajorProducers", new SelectList(Model.States, "id", "State1"), "Select State", new { @class = "form-control col-md-6 major-drop" })
+                        @Html.HiddenFor(model => model.MajorProducers, new { id = "major-model" })
+                        @Html.ValidationMessageFor(model => model.MajorProducers, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table table-bordered state-list">
+                            <tr>
+                                <th style="width:80%">State</th>
+                                <th style="width:20%"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script type="text/javascript">
+    function show(input) {
+        $('#demo_img').show();
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#demo_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+    var stateList = [];
+    $('.major-drop').change(function () {
+        var id = $('.major-drop').val();
+        var state = $('.major-drop').find("option:selected").text();
+        $('.state-list').append('<tr><td>' + state + '</td><td><button class="btn btn-danger btn-sm" onclick="deleteState(this,\'' + id + '\')">Remove</button></td></tr>');
+        stateList.push(id);
+        $('#major-model').val(stateList);
+    });
+
+    function deleteState(ev, stateid) {
+        ev.parentNode.parentNode.remove();
+        var index = stateList.indexOf(stateid);
+        console.log(index);
+        stateList.splice(index, 1);
+        console.log(stateList);
+        $('#major-model').val(stateList);
+    }
+    $(document).ready(function () {
+        $('.manage-crop').addClass('active');
+        $('.manage-dealer').removeClass('active');
+        $('.manage-faq').removeClass('active');
+        $('.manage-news').removeClass('active');
+
+    });
+</script> 

@@ -1,0 +1,353 @@
+﻿@model SmartFarming.Models.SeedDetails
+@{
+    ViewBag.Title = "Seed Detail";
+    ViewBag.Image = "seeddetails-banner2.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+    <section class="seed-details" style="padding-bottom:90px">
+        @Html.HiddenFor(model => model.id, new { @class = "seed-id" })
+        @Html.HiddenFor(model => model.dealer_id, new { @class = "dealer-id" })
+        <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+            <div class="row">
+                <div class="col-md-6 img-gallery" style="height: 448px;border-right: 1px solid #adadad85;">
+                    <div class="swiper-container gallery-top" style="border: 1px solid #adadad85;">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in Model.SeedImages)
+                            {
+                                <div class="swiper-slide"
+                                     style="background:url('/Images/@item') no-repeat center; background-size: contain;">
+                                </div>
+                            }
+
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next swiper-button-white"></div>
+                        <div class="swiper-button-prev swiper-button-white"></div>
+                    </div>
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in Model.SeedImages)
+                            {
+                                <div class="swiper-slide" style="background-image:url('/Images/@item')"></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>@Model.SeedName</h3>
+                    <div class="price-label">
+                        RS @Model.Price/<span style="font-size:14px;font-weight: 500;">Packet</span>
+                    </div>
+                    <div>
+                        <table class="table seed-details-table">
+                            <tbody>
+                                <tr>
+                                    <td>Crop</td>
+                                    <td>@Model.CropName</td>
+                                </tr>
+                                <tr>
+                                    <td>Season</td>
+                                    <td>@Model.Season</td>
+                                </tr>
+                                <tr>
+                                    <td>PestTolerance</td>
+                                    <td>@Model.PestTolerance</td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td>@Model.Duration Days</td>
+                                </tr>
+                                <tr>
+                                    <td>PacketSize</td>
+                                    <td>@Model.PacketSize</td>
+                                </tr>
+                                <tr>
+                                    <td>MinQuentity</td>
+                                    <td>@Model.MinQuentity Packets</td>
+                                </tr>
+                                <tr>
+                                    <td>SeedsPerPacket</td>
+                                    <td>@Model.SeedsPerPacket</td>
+                                </tr>
+                                <tr>
+                                    <td>Tempeture</td>
+                                    <td>@Model.Temp &#8451;</td>
+                                </tr>
+                                <tr>
+                                    <td>GrowthHabit</td>
+                                    <td>@Model.GrowthHabit</td>
+                                </tr>
+                                <tr>
+                                    <td>Fertilizer</td>
+                                    <td>@Model.Fertilizer</td>
+                                </tr>
+                                <tr>
+                                    <td>Height of Crop</td>
+                                    <td>@Model.Height cm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="get-quatation">
+                        <div class="text-center">Fill the quantity to get latest price!</div>
+                        <div class="d-flex flex-row" style="padding: 10px 23%;">
+                            <label for="Quantity"
+                                   style="line-height: 33px;margin-bottom: 0px;margin-right: 10px;"><b>Quantity</b></label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control quantity-seed" style="height: 36px;margin-bottom:0px" />
+                                </div>
+                                <div class="col-md-1">
+                                    *
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control number-of-seed" style="height: 36px;margin-bottom:0px" />
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        <div style="text-align: center;margin: 5px auto;">
+                            <button type="button" class="btn btn-green" data-toggle="modal"
+                                    data-target="#RequestQuoteModal">
+                                Request a quote
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="RequestQuoteModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body left-color-modal">
+                                            <div class="row">
+                                                <div class="col left-div-modal">
+                                                    <img src="~/Images/@Model.SeedImages[0]" class="seed-image" />
+                                                    <div class="mt-3 mb-2" style="text-align: left;">
+                                                        <h4>@Model.SeedName</h4>
+                                                        <div class="price-label">
+                                                            Rs @Model.Price/<span style="font-size:14px;font-weight: 500;">Packet</span>
+                                                        </div>
+                                                        <div class="my-3" style="font-size: 13px;">
+                                                            Sold By -<span style="color: #000;">
+                                                                @Model.Address,
+                                                                @Model.City,
+                                                                @Model.State
+                                                            </span>
+                                                        </div>
+                                                        <div style="font-size: 13px;">
+                                                        
+                                                            <p>Duration:<span style="color: #000;"> @Model.Duration Days</span></p>
+                                                            <p>Packet Size:<span style="color: #000;"> @Model.PacketSize Kg</span></p>
+                                                            <p>
+                                                                Seeds Per Packet:<span style="color: #000;"> @Model.SeedsPerPacket</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col right-div-modal" style="text-align: left;">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <div class="right-div-modal-body">
+                                                        <div class="h4">
+                                                            <b>Get Quatation</b> from "@Model.DealerName" on your
+                                                            mobile quickly.
+                                                        </div>
+                                                        <div class="my-3">
+                                                            <p style="color: #000;">Mobile Number</p>
+
+                                                            <div class="seed-modal-contact">
+                                                                <input type="text" class="form-control contact-number"
+                                                                       style="font-size: 13px;padding: 10px 74px; width: 75%;margin-bottom: 5px;" />
+                                                                <p style="font-size: 12px;">
+                                                                    <i>
+                                                                        Seller will contact you
+                                                                        on this number
+                                                                    </i>
+                                                                </p>
+                                                                <div class="seed-modal-contact-country-code">
+                                                                    <img src="~/Images/india-flag.png" height="14px"
+                                                                         width="16px">
+                                                                    <span>+91</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="my-4">
+                                                                <button type="button" class="btn btn-green quatation-btn"
+                                                                        style="padding: 8px 54px; border-radius: 2px;">
+                                                                    Submit
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="mt-5">
+
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" style="padding-bottom: 11px; z-index: 3;">
+                        <li role="presentation">
+                            <a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"
+                               class="active">Product Details</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#Section3" aria-controls="profile" role="tab"
+                               data-toggle="tab">Contact</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs custom-scroll" style="height: 523px;
+                    overflow-y: auto;">
+                        <div role="tabpanel" class="tab-pane fade in active show" id="Section1">
+                            <div class="my-2">
+                                <h3>Product Description</h3>
+                                <p>
+                                    @Model.Description
+                                </p>
+                            </div>
+                            <div class="my-2">
+                                <h3>Positive Factor</h3>
+                                <ul>
+                                    @foreach (var item in @Model.PositiveFactor.Split('.').ToList())
+                                    {
+                                        <li>@item</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="my-2">
+                                <h3>Negative Factor</h3>
+                                <ul>
+                                    @foreach (var item in @Model.NegativeFactor.Split('.').ToList())
+                                    {
+                                        <li>@item</li>
+                                    }
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="Section3" style="margin: -30px -40px;background: linear-gradient(90deg, #fafafa 50%, #fff 0%);">
+                            <div style="padding: 30px 40px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div style="padding-right: 30px;">
+                                            <div class="section-heading">
+                                                <p>Contact now</p>
+                                                <h2><span>Get In Touch</span> With Seller</h2>
+                                                <img src="~/Images/decor.png" alt="">
+                                            </div>
+                                            <div class="my-3">
+                                                <h4>@Model.DealerName</h4>
+                                                <h5 style="margin-bottom: 1px;">Address</h5>
+                                                <p><span class="ui-icon ui-icon-pin-s mr-1"></span>@Model.Address</p>
+                                                <h6>Email:<span style="font-weight: 500;"> @Model.Email</span></h6>
+                                                <h6>Phone No:<span style="font-weight: 500;"> @Model.ContactNo</span></h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="contact-us-form" style="padding-left: 30px;">
+                                            <form style="margin-top: 20px;">
+                                                <div class="form-group" style="margin-bottom: 0px;">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Your Name" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Contact" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Your Email" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Your Subject" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" placeholder="Your Message"
+                                                              rows="5"></textarea>
+                                                </div>
+
+                                                <div class="col text-center my-1">
+                                                    <button class="btn theme-btn">Send Message</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 5,
+            direction: 'vertical',
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+    $('.quatation-btn').click(function () {
+        var seedid = $('.seed-id').val();
+        var dealerid = $('.dealer-id').val();
+        var contactNo = $('.contact-number').val();
+        var quantity = $('.quantity-seed').val();
+        var noofseed = $('.number-of-seed').val();
+        console.log(quantity);
+        var model = {
+            seed_id: seedid,
+            dealer_id: dealerid,
+            contactNo: contactNo,
+            quantity: quantity,
+            noOfSeed: noofseed
+        };
+        console.log(model);
+        $.ajax({
+            url: '@Url.Action("AddQuatation","Home")',
+            type: "POST",
+            data: JSON.stringify(model),
+            contentType: "application/json"
+        });
+    });
+    </script>
+

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartFarmingModelStoreContainer" CdmEntityContainer="SmartFarmingEntities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="SmartFarmingModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="City1" ColumnName="City" />
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactUs">
+      <EntityTypeMapping TypeName="SmartFarmingModel.ContactU">
+        <MappingFragment StoreEntitySet="ContactUs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crops">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Crop">
+        <MappingFragment StoreEntitySet="Crops">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CropName" ColumnName="CropName" />
+          <ScalarProperty Name="CropDesc" ColumnName="CropDesc" />
+          <ScalarProperty Name="Kharif" ColumnName="Kharif" />
+          <ScalarProperty Name="Rabi" ColumnName="Rabi" />
+          <ScalarProperty Name="Zaid" ColumnName="Zaid" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="CropImage" ColumnName="CropImage" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="RainFall" ColumnName="RainFall" />
+          <ScalarProperty Name="SoilType" ColumnName="SoilType" />
+          <ScalarProperty Name="HighestProducers" ColumnName="HighestProducers" />
+          <ScalarProperty Name="LandPreparation" ColumnName="LandPreparation" />
+          <ScalarProperty Name="SowingMethod" ColumnName="SowingMethod" />
+          <ScalarProperty Name="Harvesting" ColumnName="Harvesting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CropTypes">
+      <EntityTypeMapping TypeName="SmartFarmingModel.CropType">
+        <MappingFragment StoreEntitySet="CropTypes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Croptype1" ColumnName="Croptype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faqs">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Faq">
+        <MappingFragment StoreEntitySet="Faqs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fertilizers">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Fertilizer">
+        <MappingFragment StoreEntitySet="Fertilizers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="crop_id" ColumnName="crop_id" />
+          <ScalarProperty Name="FertilizerName" ColumnName="FertilizerName" />
+          <ScalarProperty Name="FertilizerImage" ColumnName="FertilizerImage" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="PackType" ColumnName="PackType" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="Features" ColumnName="Features" />
+          <ScalarProperty Name="Solubility" ColumnName="Solubility" />
+          <ScalarProperty Name="Doses" ColumnName="Doses" />
+          <ScalarProperty Name="PHvalue" ColumnName="PHvalue" />
+          <ScalarProperty Name="HowToUse" ColumnName="HowToUse" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MajorProducers">
+      <EntityTypeMapping TypeName="SmartFarmingModel.MajorProducer">
+        <MappingFragment StoreEntitySet="MajorProducers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="crop_id" ColumnName="crop_id" />
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="SmartFarmingModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Headline" ColumnName="Headline" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pesticides">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Pesticide">
+        <MappingFragment StoreEntitySet="Pesticides">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="crop_id" ColumnName="crop_id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="PesticideName" ColumnName="PesticideName" />
+          <ScalarProperty Name="PesticideImage" ColumnName="PesticideImage" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PackingType" ColumnName="PackingType" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="Formulation" ColumnName="Formulation" />
+          <ScalarProperty Name="PesticideDescription" ColumnName="PesticideDescription" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotations">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Quotation">
+        <MappingFragment StoreEntitySet="Quotation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seed_id" ColumnName="seed_id" />
+          <ScalarProperty Name="pesticide_id" ColumnName="pesticide_id" />
+          <ScalarProperty Name="fertilizer_id" ColumnName="fertilizer_id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeedImages">
+      <EntityTypeMapping TypeName="SmartFarmingModel.SeedImage">
+        <MappingFragment StoreEntitySet="SeedImages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seed_id" ColumnName="seed_id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seeds">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Seed">
+        <MappingFragment StoreEntitySet="Seeds">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="crop_id" ColumnName="crop_id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="SeedName" ColumnName="SeedName" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="PestTolerance" ColumnName="PestTolerance" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="MinQuentity" ColumnName="MinQuentity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PacketSize" ColumnName="PacketSize" />
+          <ScalarProperty Name="GrowthHabit" ColumnName="GrowthHabit" />
+          <ScalarProperty Name="PositiveFactor" ColumnName="PositiveFactor" />
+          <ScalarProperty Name="NegativeFactor" ColumnName="NegativeFactor" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="Fertilizer" ColumnName="Fertilizer" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="SeedsPerPacket" ColumnName="SeedsPerPacket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="SmartFarmingModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="State1" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SmartFarmingModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tractors">
+      <EntityTypeMapping TypeName="SmartFarmingModel.Tractor">
+        <MappingFragment StoreEntitySet="Tractors">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dealer_id" ColumnName="dealer_id" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+          <ScalarProperty Name="TractorImage" ColumnName="TractorImage" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Clutch" ColumnName="Clutch" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="NoOfCylinder" ColumnName="NoOfCylinder" />
+          <ScalarProperty Name="HpCategory" ColumnName="HpCategory" />
+          <ScalarProperty Name="EngineRatedRPM" ColumnName="EngineRatedRPM" />
+          <ScalarProperty Name="Cooling" ColumnName="Cooling" />
+          <ScalarProperty Name="AirFilter" ColumnName="AirFilter" />
+          <ScalarProperty Name="Brake" ColumnName="Brake" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="GearBox" ColumnName="GearBox" />
+          <ScalarProperty Name="Steering" ColumnName="Steering" />
+          <ScalarProperty Name="FuelTank" ColumnName="FuelTank" />
+          <ScalarProperty Name="Accessories" ColumnName="Accessories" />
+          <ScalarProperty Name="Features" ColumnName="Features" />
+          <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="GroundClearance" ColumnName="GroundClearance" />
+          <ScalarProperty Name="TurningRadius" ColumnName="TurningRadius" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SmartFarmingModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="state_id" ColumnName="state_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeedFaqs">
+      <EntityTypeMapping TypeName="SmartFarmingModel.SeedFaq">
+        <MappingFragment StoreEntitySet="SeedFaqs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seed_id" ColumnName="seed_id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Posted" ColumnName="Posted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

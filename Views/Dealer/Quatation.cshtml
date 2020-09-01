@@ -1,0 +1,109 @@
+﻿@model SmartFarming.Models.Quatation
+@{
+    ViewBag.Title = "Quatation";
+    Layout = "~/Views/Shared/_DealerLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;Manage Quatation
+            </h4>
+        </div>
+        <div class="panel-body" style="margin-top:10px">
+            <div class="container-fluid">
+                @if (Model.seedlist.Count != 0)
+                {
+                <table class="table table-bordered table-hover">
+                    <caption class="table-heading">Seed</caption>
+                    <thead>
+                        <tr>
+                            <th style="width:8%">Sr. No</th>
+                            <th style="width:20%">Name</th>
+                            <th style="width:20%">Quantity</th>
+                            <th style="width:10%">Unit</th>
+                            <th style="width:22%">ContactNo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= Model.seedlist.Count; i++)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@Model.seedlist[i - 1].SeedName</td>
+                                <td>@Model.seedlist[i - 1].Quantity</td>
+                                <td>@Model.seedlist[i - 1].Unit</td>
+                                <td>@Model.seedlist[i - 1].ContactNo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                }
+
+                @if (Model.pesticidelist.Count != 0)
+                {
+            <table class="table table-bordered table-hover">
+                <caption class="table-heading">Pesticides</caption>
+                <thead>
+                    <tr>
+                        <th style="width:8%">Sr. No</th>
+                        <th style="width:20%">Name</th>
+                        <th style="width:20%">Quantity</th>
+                        <th style="width:10%">Unit</th>
+                        <th style="width:22%">ContactNo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 1; i <= Model.pesticidelist.Count; i++)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@Model.pesticidelist[i - 1].PesticideName</td>
+                            <td>@Model.pesticidelist[i - 1].Quantity</td>
+                            <td>@Model.pesticidelist[i - 1].Unit</td>
+                            <td>@Model.pesticidelist[i - 1].ContactNo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+                }
+                @if (Model.fertilizerlist.Count != 0)
+                {
+            <table class="table table-bordered table-hover">
+                <caption class="table-heading">Fertilizer</caption>
+                <thead>
+                    <tr>
+                        <th style="width:8%">Sr. No</th>
+                        <th style="width:20%">Name</th>
+                        <th style="width:20%">Quantity</th>
+                        <th style="width:10%">Unit</th>
+                        <th style="width:22%">ContactNo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 1; i <= Model.fertilizerlist.Count; i++)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@Model.fertilizerlist[i - 1].FertilizerName</td>
+                            <td>@Model.fertilizerlist[i - 1].Quantity</td>
+                            <td>@Model.fertilizerlist[i - 1].Unit</td>
+                            <td>@Model.fertilizerlist[i - 1].ContactNo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-pesticides').removeClass('active');
+        $('.manage-seeds').removeClass('active');
+        $('.manage-fertilizers').removeClass('active');
+        $('.quatation').addClass('active');
+    });
+</script>

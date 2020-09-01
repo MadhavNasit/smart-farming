@@ -1,0 +1,484 @@
+﻿
+@{
+    ViewBag.Title = "TractorCompare";
+    ViewBag.Image = "tractor-banner.jpg";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section style="padding-bottom:90px">
+    <div class="container pb-2 pt-3" style="background-color: #fff; margin-top:-40px; border-radius: .5em;">
+        <div class="row" style="margin: 0px 0px;">
+            <div class="col-md-4 col-border">
+                <div class="mt-3 mb-3">
+                    <button type="button" class="btn btn-success" style="width: 100%; font-size: 16px; font-weight: 700;">Please Select Tractor</button>
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    @Html.DropDownList("Tractor Brands", new SelectList(ViewBag.brands, "id", "Name"), "Select Brand", new { @class = "form-control", id = "first-brand" })
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    <select class="form-control" id="first-model">
+                        <option value>Select Model</option>
+                    </select>
+                </div>
+                <div id="box-1" style="display:none">
+                    <div class="mt-3 mb-2" style="height:190px">
+                        <img class="tractor-image" id="tractor-img-1" />
+                    </div>
+                    <div class="tractor-main-box">
+                        <ul class="tractor-list">
+                            <li class="tractor-brand" id="brand-1"></li>
+                            <li class="tractor-model" id="model-1"></li>
+                            <li><b>CC : </b><span id="capacity-1"></span></li>
+                            <li><b>Cylinder : </b><span id="cylinder-1"></span></li>
+                            <li><b>Clutch : </b><span id="clutch-1"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-border">
+                <div class="mt-3 mb-3">
+                    <button type="button" class="btn btn-success" style="width: 100%; font-size: 16px; font-weight: 700;">Please Select Tractor</button>
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    @Html.DropDownList("Tractor Brands", new SelectList(ViewBag.brands, "id", "Name"), "Select Brand", new { @class = "form-control", id = "second-brand" })
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    <select class="form-control" id="second-model">
+                        <option value>Select Model</option>
+                    </select>
+                </div>
+                <div id="box-2" style="display:none">
+                    <div class="mt-3 mb-2" style="height:190px">
+                        <img class="tractor-image" id="tractor-img-2" />
+                    </div>
+                    <div class="tractor-main-box">
+                        <ul class="tractor-list">
+                            <li class="tractor-brand" id="brand-2"></li>
+                            <li class="tractor-model" id="model-2"></li>
+                            <li><b>CC : </b><span id="capacity-2"></span></li>
+                            <li><b>Cylinder : </b><span id="cylinder-2"></span></li>
+                            <li><b>Clutch : </b><span id="clutch-2"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-border right-border">
+                <div class="mt-3 mb-3">
+                    <button type="button" class="btn btn-success" style="width: 100%; font-size: 16px; font-weight: 700;">Please Select Tractor</button>
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    @Html.DropDownList("Tractor Brands", new SelectList(ViewBag.brands, "id", "Name"), "Select Brand", new { @class = "form-control", id = "third-brand" })
+                </div>
+                <div class="mt-3 mb-3 form-group">
+                    <select class="form-control" id="third-model">
+                        <option value>Select Model</option>
+                    </select>
+                </div>
+                <div id="box-3" style="display:none">
+                    <div class="mt-3 mb-2" style="height:190px">
+                        <img class="tractor-image" id="tractor-img-3" />
+                    </div>
+                    <div class="tractor-main-box">
+                        <ul class="tractor-list">
+                            <li class="tractor-brand" id="brand-3"></li>
+                            <li class="tractor-model" id="model-3"></li>
+                            <li><b>CC : </b><span id="capacity-3"></span></li>
+                            <li><b>Cylinder : </b><span id="cylinder-3"></span></li>
+                            <li><b>Clutch : </b><span id="clutch-3"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center mt-3 mb-3">
+                <button class="btn theme-btn" id="compare-btn">Compare</button>
+                <button class="btn theme-btn" id="reset-btn">Reset</button>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Engine</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="NoOfCylinder">
+                            <td><b>No. Of Cylinder</b></td>
+                        </tr>
+                        <tr id="HPCategory">
+                            <td><b>HP Category</b></td>
+                        </tr>
+                        <tr id="Capacity">
+                            <td><b>Capacity CC</b></td>
+                        </tr>
+                        <tr id="EngineRPM">
+                            <td><b>Engine Rated RPM</b></td>
+                        </tr>
+                        <tr id="Cooling">
+                            <td><b>Cooling</b></td>
+                        </tr>
+                        <tr id="AirFilter">
+                            <td><b>Air Filter</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Transmission</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Clutch">
+                            <td><b>Clutch</b></td>
+                        </tr>
+                        <tr id="Battery">
+                            <td><b>Battery</b></td>
+                        </tr>
+                        <tr id="GearBox">
+                            <td><b>Gear Box</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Brakes</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Brake">
+                            <td><b>Brake</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Steering</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Steering">
+                            <td><b>Steering Type</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Fuel Tank</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="FuelTank">
+                            <td><b>Capacity</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Dimentions and Weight of Tractor</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="TotalWeight">
+                            <td><b>Total Weight</b></td>
+                        </tr>
+                        <tr id="GroundClearance">
+                            <td><b>Ground Clearance</b></td>
+                        </tr>
+                        <tr id="TurningRadius">
+                            <td><b>Turning Radius</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Additional Features</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Accessories">
+                            <td><b>Accessories</b></td>
+                        </tr>
+                        <tr id="Features">
+                            <td><b>Features</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Warrenty</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Warrenty">
+                            <td><b>Warrenty</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card compare-tractor mt-3 mb-3">
+            <div class="card-header bg-success">Status</div>
+            <div class="card-body">
+                <table class="table table-striped tractor-table">
+                    <tbody>
+                        <tr id="Status">
+                            <td><b>Status</b></td>
+                        </tr>
+                        <tr id="Price">
+                            <td><b>Price</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#second-brand').prop("disabled", true);
+        $('#third-brand').prop("disabled", true);
+        $('#first-model').prop("disabled", true);
+        $('#second-model').prop("disabled", true);
+        $('#third-model').prop("disabled", true);
+        $("#reset-btn").hide();
+    });
+
+    $('#first-brand').change(function () {
+        var brand = $('#first-brand').val();
+        if (brand != "") {
+            $('#first-model').prop("disabled", false);
+            $('#first-model').empty();
+            $('#first-model').append('<option value>Select Model</option>');
+
+            $.ajax({
+                url: '@Url.Action("GetTractorModels","Home")',
+                method: "GET",
+                data: { 'id': brand },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    $(".loader").show();
+                },
+                success: function (response) {
+
+                    if (response.length != 0) {
+                        for (var i = 0; i < response.length; i++) {
+                            $('#first-model').append('<option value="' + response[i].id + '")>' + response[i].ModelName + '</option>');
+                            $('#second-brand').prop("disabled", false);
+                        }
+                    }
+                },
+                complete: function (data) {
+                    $(".loader").hide();
+                }
+            });
+            }
+            else {
+                $('#first-model').prop("disabled", true);
+                $('#first-model').empty();
+                $('#first-model').append('<option value>Select Model</option>');
+
+            }
+
+        });
+
+    $('#second-brand').change(function () {
+        var brand = $('#second-brand').val();
+        if (brand != "") {
+            $('#second-model').prop("disabled", false);
+            $('#second-model').empty();
+            $('#second-model').append('<option value>Select Model</option>');
+
+            $.ajax({
+                url: '@Url.Action("GetTractorModels","Home")',
+                method: "GET",
+                data: { 'id': brand },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    $(".loader").show();
+                },
+                success: function (response) {
+
+                    if (response.length != 0) {
+                        for (var i = 0; i < response.length; i++) {
+                            $('#second-model').append('<option value="' + response[i].id + '")>' + response[i].ModelName + '</option>');
+                            $('#third-brand').prop("disabled", false);
+                        }
+                    }
+                },
+                complete: function (data) {
+                    $(".loader").hide();
+                }
+            });
+            }
+            else {
+            $('#second-model').prop("disabled", true);
+            $('#second-model').empty();
+            $('#second-model').append('<option value>Select Model</option>');
+
+            }
+
+    });
+
+    $('#third-brand').change(function () {
+        var brand = $('#third-brand').val();
+        if (brand != "") {
+            $('#third-model').prop("disabled", false);
+            $('#third-model').empty();
+            $('#third-model').append('<option value>Select Model</option>');
+
+            $.ajax({
+                url: '@Url.Action("GetTractorModels","Home")',
+                method: "GET",
+                data: { 'id': brand },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    $(".loader").show();
+                },
+                success: function (response) {
+
+                    if (response.length != 0) {
+                        for (var i = 0; i < response.length; i++) {
+                            $('#third-model').append('<option value="' + response[i].id + '")>' + response[i].ModelName + '</option>');
+                        }
+                    }
+                },
+                complete: function (data) {
+                    $(".loader").hide();
+                }
+            });
+            }
+            else {
+            $('#third-model').prop("disabled", true);
+            $('#third-model').empty();
+            $('#third-model').append('<option value>Select Model</option>');
+
+            }
+
+    });
+    $("#compare-btn").click(function () {
+        var firstmodel = $('#first-model').val();
+        var secondmodel = $('#second-model').val();
+        var thirdmodel = $('#third-model').val();
+        if (firstmodel == "" || secondmodel == "") {
+            alert("Please Select Drop-Down Properly!!");
+        }
+        else if (firstmodel == secondmodel || firstmodel == thirdmodel || secondmodel == thirdmodel) {
+            alert("Please Select Different Models!!");
+        }
+        else {
+            var ids = [];
+            ids.push(firstmodel);
+            ids.push(secondmodel);
+            if (thirdmodel != "") {
+                ids.push(thirdmodel);
+            }
+            var postData = JSON.stringify(ids); 
+            $.ajax({
+                url: '@Url.Action("GetTractorDetails", "Home")',
+                type: 'POST',
+                async: false,
+                data: {'ids': ids},
+                dataType: 'json',
+                beforeSend: function () {
+                    $(".loader").show();
+                },
+                success: function (response) {
+
+                    $("#compare-btn").hide();
+                    $("#reset-btn").show();
+                    $('#box-1').show();
+                    $('#tractor-img-1').attr("src", '/Images/' + response[0].TractorImage + '');
+                    $('#brand-1').html(response[0].DealerName);
+                    $('#model-1').html(response[0].ModelName);
+                    $('#capacity-1').html(response[0].Capacity);
+                    $('#clutch-1').html(response[0].Clutch);
+
+                    $('#box-2').show();
+                    $('#tractor-img-2').attr("src", '/Images/' + response[1].TractorImage + '');
+                    $('#brand-2').html(response[0].DealerName);
+                    $('#model-2').html(response[1].ModelName);
+                    $('#capacity-2').html(response[1].Capacity);
+                    $('#clutch-2').html(response[1].Clutch);
+
+                    if (thirdmodel != "") {
+                        $('#box-3').show();
+                        $('#tractor-img-3').attr("src", '/Images/' + response[2].TractorImage + '');
+                        $('#brand-3').html(response[0].DealerName);
+                        $('#model-3').html(response[2].ModelName);
+                        $('#capacity-3').html(response[2].Capacity);
+                        $('#clutch-3').html(response[2].Clutch);
+
+                        $('#NoOfCylinder').append('<td>' + response[0].NoOfCylinder + '</td><td>' + response[1].NoOfCylinder + '</td><td>' + response[2].NoOfCylinder + '</td>');
+                        $('#HPCategory').append('<td>' + response[0].HpCategory + '</td><td>' + response[1].HpCategory + '</td><td>' + response[2].HpCategory + '</td>');
+                        $('#Capacity').append('<td>' + response[0].Capacity + '</td><td>' + response[1].Capacity + '</td><td>' + response[2].Capacity + '</td>');
+                        $('#EngineRPM').append('<td>' + response[0].EngineRatedRPM + '</td><td>' + response[1].EngineRatedRPM + '</td><td>' + response[2].EngineRatedRPM + '</td>');
+                        $('#Cooling').append('<td>' + response[0].Cooling + '</td><td>' + response[1].Cooling + '</td><td>' + response[2].Cooling + '</td>');
+                        $('#AirFilter').append('<td>' + response[0].AirFilter + '</td><td>' + response[1].AirFilter + '</td><td>' + response[2].AirFilter + '</td>');
+                        $('#Clutch').append('<td>' + response[0].Clutch + '</td><td>' + response[1].Clutch + '</td><td>' + response[2].Clutch + '</td>');
+                        $('#Battery').append('<td>' + response[0].Battery + '</td><td>' + response[1].Battery + '</td><td>' + response[2].Battery + '</td>');
+                        $('#GearBox').append('<td>' + response[0].GearBox + '</td><td>' + response[1].GearBox + '</td><td>' + response[2].GearBox + '</td>');
+                        $('#Brake').append('<td>' + response[0].Brake + '</td><td>' + response[1].Brake + '</td><td>' + response[2].Brake + '</td>');
+                        $('#Steering').append('<td>' + response[0].Steering + '</td><td>' + response[1].Steering + '</td><td>' + response[2].Steering + '</td>');
+                        $('#FuelTank').append('<td>' + response[0].FuelTank + '</td><td>' + response[1].FuelTank + '</td><td>' + response[2].FuelTank + '</td>');
+                        $('#TotalWeight').append('<td>' + response[0].TotalWeight + '</td><td>' + response[1].TotalWeight + '</td><td>' + response[2].TotalWeight + '</td>');
+                        $('#GroundClearance').append('<td>' + response[0].GroundClearance + '</td><td>' + response[1].GroundClearance + '</td><td>' + response[2].GroundClearance + '</td>');
+                        $('#TurningRadius').append('<td>' + response[0].TurningRadius + '</td><td>' + response[1].TurningRadius + '</td><td>' + response[2].TurningRadius + '</td>');
+                        $('#Accessories').append('<td>' + response[0].Accessories + '</td><td>' + response[1].Accessories + '</td><td>' + response[2].Accessories + '</td>');
+                        $('#Features').append('<td>' + response[0].Features + '</td><td>' + response[1].Features + '</td><td>' + response[2].Features + '</td>');
+                        $('#Warrenty').append('<td>' + response[0].Warranty + ' Years</td><td>' + response[1].Warranty + 'Years</td><td>' + response[2].Warranty + 'Years</td>');
+                        $('#Status').append('<td>' + response[0].Status + '</td><td>' + response[1].Status + '</td><td>' + response[2].Status + '</td>');
+                        $('#Price').append('<td>' + response[0].Price + '</td><td>' + response[1].Price + '</td><td>' + response[2].Price + '</td>');
+                    }
+                    else {
+                        $('#NoOfCylinder').append('<td>' + response[0].NoOfCylinder + '</td><td>' + response[1].NoOfCylinder + '</td><td></td>');
+                        $('#HPCategory').append('<td>' + response[0].HpCategory + '</td><td>' + response[1].HpCategory + '</td><td></td>');
+                        $('#Capacity').append('<td>' + response[0].Capacity + '</td><td>' + response[1].Capacity + '</td><td></td>');
+                        $('#EngineRPM').append('<td>' + response[0].EngineRatedRPM + '</td><td>' + response[1].EngineRatedRPM + '</td><td></td>');
+                        $('#Cooling').append('<td>' + response[0].Cooling + '</td><td>' + response[1].Cooling + '</td><td></td>');
+                        $('#AirFilter').append('<td>' + response[0].AirFilter + '</td><td>' + response[1].AirFilter + '</td><td></td>');
+                        $('#Clutch').append('<td>' + response[0].Clutch + '</td><td>' + response[1].Clutch + '</td><td></td>');
+                        $('#Battery').append('<td>' + response[0].Battery + '</td><td>' + response[1].Battery + '</td><td></td>');
+                        $('#GearBox').append('<td>' + response[0].GearBox + '</td><td>' + response[1].GearBox + '</td><td></td>');
+                        $('#Brake').append('<td>' + response[0].Brake + '</td><td>' + response[1].Brake + '</td><td></td>');
+                        $('#Steering').append('<td>' + response[0].Steering + '</td><td>' + response[1].Steering + '</td><td></td>');
+                        $('#FuelTank').append('<td>' + response[0].FuelTank + '</td><td>' + response[1].FuelTank + '</td><td></td>');
+                        $('#TotalWeight').append('<td>' + response[0].TotalWeight + '</td><td>' + response[1].TotalWeight + '</td><td></td>');
+                        $('#GroundClearance').append('<td>' + response[0].GroundClearance + '</td><td>' + response[1].GroundClearance + '</td><td></td>');
+                        $('#TurningRadius').append('<td>' + response[0].TurningRadius + '</td><td>' + response[1].TurningRadius + '</td><td></td>');
+                        $('#Accessories').append('<td>' + response[0].Accessories + '</td><td>' + response[1].Accessories + '</td><td></td>');
+                        $('#Features').append('<td>' + response[0].Features + '</td><td>' + response[1].Features + '</td><td></td>');
+                        $('#Warrenty').append('<td>' + response[0].Warranty + 'Years</td><td>' + response[1].Warranty + 'Years</td><td></td>');
+                        $('#Status').append('<td>' + response[0].Status + '</td><td>' + response[1].Status + '</td><td></td>');
+                        $('#Price').append('<td>' + response[0].Price + '</td><td>' + response[1].Price + '</td><td></td>');
+                    }
+                    
+                },
+                error: function () {
+                    alert("Something Error")
+                },
+                complete: function (data) {
+                    $(".loader").hide();
+                }
+            });
+        }
+    });
+    $('#reset-btn').click(function () {
+        location.reload(true);
+    });
+</script>

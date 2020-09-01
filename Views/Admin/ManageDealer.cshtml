@@ -1,0 +1,53 @@
+﻿@model List<SmartFarming.Models.ManageDealer>
+@{
+    ViewBag.Title = "ManageDealer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Manage Dealers
+            </h4>
+        </div>
+        <div class="panel-body" style="margin-top:10px">
+            <div class="container-fluid">
+                <a href="@Url.Action("AddDealer", "Admin")" class="btn btn-primary" style="float:right; margin-bottom:6px; font-weight:700;"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Dealer</a>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:8%; text-align:center;">Sr. No</th>
+                            <th style="width:28%;">Dealer Name</th>
+                            <th style="width:36%;">Dealer Email</th>
+                            <th style="width:20%;">Role</th>
+                            <th style="width:8%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= Model.Count; i++)
+                        {
+                            <tr>
+                                <td style="text-align:center;">@i</td>
+                                <td>@Model[i - 1].Name</td>
+                                <td>@Model[i - 1].Email</td>
+                                <td>@Model[i - 1].Title</td>
+                                <td>
+                                    <a href="@Url.Action("DeleteDealer", "Admin",new { id = Model[i - 1].Id })" class="btn btn-xs btn-danger" style="text-align:center;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-crop').removeClass('active');
+        $('.manage-dealer').addClass('active');
+        $('.manage-faq').removeClass('active');
+        $('.manage-news').removeClass('active');
+    });
+</script>

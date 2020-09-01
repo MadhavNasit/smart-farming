@@ -1,0 +1,51 @@
+﻿@model List<SmartFarming.Models.ManageFaq>
+
+@{
+    ViewBag.Title = "ManageFaqs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading main-color-bg">
+            <h4 class="panel-title">
+                <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp; Manage Faqs
+            </h4>
+        </div>
+        <div class="panel-body" style="margin-top:10px">
+            <div class="container-fluid">
+                <a href="@Url.Action("AddFaq", "Admin",new { id = 0 })" class="btn btn-primary" style="float:right; margin-bottom:6px; font-weight:700;"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add FAQ</a>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:10%">Sr. No</th>
+                            <th style="width:73%">Question</th>
+                            <th style="width:17%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@Model[i - 1].Question</td>
+                                <td>
+                                    <a href="@Url.Action("AddFaq", "Admin",new { id = Model[i - 1].id })" class = "btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                                    <a href="@Url.Action("DeleteFaq", "Admin",new { id = Model[i - 1].id })" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.manage-faq').addClass('active');
+        $('.manage-crop').removeClass('active');
+        $('.manage-dealer').removeClass('active');
+        $('.manage-news').removeClass('active');
+    });
+</script>

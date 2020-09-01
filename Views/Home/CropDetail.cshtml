@@ -1,0 +1,192 @@
+﻿@model SmartFarming.Models.CropById
+    @{
+        ViewBag.Title = "Crop Details";
+        ViewBag.Image = "banner4.jpg";
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+    }
+
+    <section class="seed-details" style="padding-bottom:90px">
+        <div class="container p-3" style="background-color: #fff; margin-top:-40px; border-radius: 5px;">
+            <div class="row">
+                <div class="col-md-4 d-flex align-items-stretch" style="border-right: 1px solid #adadad85;">
+                    <div class="d-flex justify-content-center"  style="border: 1px solid #adadad85; width:100%;">
+                        <img src="~/Images/@Model.cropDetail.CropImage" width="100%" style="object-fit:contain"/>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h3>@Model.cropDetail.CropName</h3>
+                    <div>
+                        <table class="table seed-details-table" style="margin-bottom:0px">
+                            <tbody>
+                                <tr>
+                                    <td>Crop Type</td>
+                                    <td>@Model.cropDetail.CropType</td>
+                                </tr>
+                                <tr>
+                                    <td>Season</td>
+                                    <td>@Model.cropDetail.Season</td>
+                                </tr>
+                                <tr>
+                                    <td>Temperature</td>
+                                    <td>@Model.cropDetail.Temp &#8451;</td>
+                                </tr>
+                                <tr>
+                                    <td>RainFall</td>
+                                    <td>@Model.cropDetail.RainFall cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Soil Type</td>
+                                    <td>@Model.cropDetail.SoilType</td>
+                                </tr>
+                                <tr>
+                                    <td>Highest Producers</td>
+                                    <td>@Model.cropDetail.HighestProducers</td>
+                                </tr>
+                                <tr>
+                                    <td>Major Producers</td>
+                                    <td>@string.Join(", ", Model.cropDetail.MajorProducers)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr />
+            <div class="mt-4">
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" style="padding-bottom: 11px; z-index: 3;">
+                        <li role="presentation">
+                            <a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"
+                               class="active">Crop Details</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#Section2" aria-controls="profile" role="tab"
+                               data-toggle="tab">Seeds</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#Section3" aria-controls="profile" role="tab"
+                               data-toggle="tab">Pesticides</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#Section4" aria-controls="profile" role="tab"
+                               data-toggle="tab">Fertilizers</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs">
+                        <div role="tabpanel" class="tab-pane fade in active show" id="Section1">
+                            <div class="my-2">
+                                <h3>Crop Description</h3>
+                                <p>
+                                    @Model.cropDetail.CropDesc
+                                </p>
+                            </div>
+                            <div class="my-2">
+                                <h3>Land Preparation</h3>
+                                <p>
+                                    @Model.cropDetail.LandPreparation
+                                </p>
+                            </div>
+                            <div class="my-2">
+                                <h3>Sowing Method</h3>
+                                <p>
+                                    @Model.cropDetail.SowingMethod
+                                </p>
+                            </div>
+                            <div class="my-2">
+                                <h3>Harvesting</h3>
+                                <p>
+                                    @Model.cropDetail.Harvesting
+                                </p>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section2">
+                            <div class="row">
+                                @foreach (var item in Model.seedList)
+                                {
+                                <div class="col-md-4">
+                                    <a href="@Url.Action("SeedDetail","Home", new { id = item.id})">
+                                        <div class="card border-0 med-blog">
+                                            <div class="card-header p-0">
+                                                <img class="card-img-bottom" src="~/Images/@item.Image" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body border border-top-0">
+                                                <div class="mb-1">
+                                                    <h5 class="blog-title card-title m-0">
+                                                        @item.SeedName
+                                                    </h5>
+                                                </div>
+                                                <p><b>Price :</b> @item.Price</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                    
+                                }
+                            </div>
+                            
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                            <div class="row">
+                                @foreach (var item in Model.pesticideList)
+                                {
+                                    <div class="col-md-4">
+                                        <a href="@Url.Action("PesticideDetail","Home", new { id = item.id})">
+                                            <div class="card border-0 med-blog">
+                                                <div class="card-header p-0">
+                                                    <img class="card-img-bottom" src="~/Images/@item.Image" alt="Card image cap">
+                                                </div>
+                                                <div class="card-body border border-top-0">
+                                                    <div class="mb-1">
+                                                        <h5 class="blog-title card-title m-0">
+                                                            @item.PesticideName
+                                                        </h5>
+                                                    </div>
+                                                    <div><b>Category :</b> @item.Category</div>
+                                                    <p><b>Price :</b> @item.Price</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                }
+                            </div>
+                            
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section4">
+                            <div class="row">
+                                @foreach (var item in Model.fertilizerList)
+                                {
+                                    <div class="col-md-4">
+                                        <a href="@Url.Action("FertilizerDetail","Home", new { id = item.id})">
+                                            <div class="card border-0 med-blog">
+                                                <div class="card-header p-0">
+                                                    <img class="card-img-bottom" src="~/Images/@item.Image" alt="Card image cap">
+                                                </div>
+                                                <div class="card-body border border-top-0">
+                                                    <div class="mb-1">
+                                                        <h5 class="blog-title card-title m-0">
+                                                            @item.FertilizerName
+                                                        </h5>
+                                                    </div>
+                                                    <div><b>Price :</b> @item.Material</div>
+                                                    <p><b>Price :</b> @item.Price</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>

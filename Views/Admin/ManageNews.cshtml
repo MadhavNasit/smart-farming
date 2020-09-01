@@ -1,0 +1,78 @@
+﻿@model SmartFarming.Models.NewsView
+@{
+    ViewBag.Title = "ManageNews";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading main-color-bg">
+                <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp; Add News
+                </h4>
+            </div>
+            @using (Html.BeginForm("ManageNews", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="panel-body" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.Headline, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                            @Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                            @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel-body" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(model => model.Text, new { @class = "form-control col-md-10", rows = 5 })
+                            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.manage-faq').removeClass('active');
+            $('.manage-crop').removeClass('active');
+            $('.manage-dealer').removeClass('active');
+            $('.manage-news').addClass('active');
+        });
+    </script>
+
